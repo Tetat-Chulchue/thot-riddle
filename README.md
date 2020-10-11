@@ -1,4 +1,4 @@
-## thot-riddle
+## thoth-riddle
 #Member List
 - 61070008
 - 61070089
