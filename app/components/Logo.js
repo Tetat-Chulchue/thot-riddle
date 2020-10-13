@@ -11,7 +11,7 @@ class Logo extends Component {
         return (
             <View style={styles.container}>
                 <Image
-                    source={require('../assets/img/logo_placeholder.png')}
+                    source={require('../assets/img/logo_thoth.png')}
                     style={styles.logo}
                 />
             </View>
