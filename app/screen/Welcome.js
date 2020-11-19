@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     logo: {
-        flex: 2
+        flex: 0.5
     }
 });
 
