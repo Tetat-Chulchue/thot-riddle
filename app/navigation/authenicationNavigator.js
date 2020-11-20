@@ -5,13 +5,21 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 
-import authenicationNavigator from './authenicationNavigator';
+import Login from '../screen/Login';
+import Register from '../screen/Register';
+import Welcome from '../screen/Welcome';
 
-const mainNavigator = createStackNavigator(
+const authenNavigator = createStackNavigator(
     {
-        authenication: {
-            screen: authenicationNavigator
-        }
+        welcome: {
+            screen: Welcome
+        },
+        register: {
+            screen: Register
+        },
+        login: {
+            screen: Login
+        },
     },
     {
         defaultNavigationOptions: {
@@ -20,4 +28,4 @@ const mainNavigator = createStackNavigator(
     }
 )
 
-export default createAppContainer(mainNavigator);
+export default authenNavigator;
