@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MyNavigator from './navigation/mainNavigator';
+import Taggy from './navigation/TaggyNav';
 
 export default function App() {
     return <MyNavigator />
@@ -10,7 +11,7 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor:    '#fff',
         alignItems: 'center',
         justifyContent: 'center',
     },
