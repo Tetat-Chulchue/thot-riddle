@@ -10,14 +10,12 @@ import {
     FlatList,
     TouchableOpacity,
 } from "react-native";
-// import CustomHeaderButton from "../components/CustomHeaderButton";
-// import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import color from '../../constants/colors';
 const { width, height } = Dimensions.get('window');
 import { AntDesign } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 
-const ChapterDetail = (props) => {
+const MiniSubjectDetail = (props) => {
     const Id = props.navigation.getParam("id");
     return (
         <View style={styles.container}>
@@ -26,34 +24,33 @@ const ChapterDetail = (props) => {
                     <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.pop() }}>
                         <AntDesign name="left" size={24} color="black" style={{ flex: 1 }} />
                     </TouchableOpacity>
-                    <Text style={{ color: 'white', fontSize: 23, fontWeight: 'bold', flex: 6 }}>Chapter {Id}</Text>
+                    <Text style={{ color: 'white', fontSize: 23, fontWeight: 'bold', flex: 6}}>This is Subject {Id}</Text>
                 </View>
                 <View style={styles.search}>
-                    <Text style={{ color: 'white', fontSize: 23, fontWeight: 'bold', flex: 1, alignSelf: "flex-start" }}>Detail</Text>
-                    <Text style={{ color: 'white', fontSize: 18, flex: 6, alignSelf: "flex-start" }}>This is all about Chapter {Id}.....?....{"\n"}
-                    What?....U though this page look familiar? no no no nope.....just ur imagination trust me...</Text>
+                    <Text style={{ color: 'white', fontSize: 23, fontWeight: 'bold', flex: 1, alignSelf: "flex-start"}}>Detail</Text>
+                    <Text style={{ color: 'white', fontSize: 18, flex: 6, alignSelf: "flex-start"}}>This is all about Subject {Id}.....wanna hear me explain it?
+                    {"\n"}hah fine. but I will only tell u only one time ok? because I am too tired from coding this stupid page</Text>
                 </View>
                 <View style={styles.nani}>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('exercisePage', {id: '1'})}}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Exercise 1</Text>
+                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('chapDetail', {id: '1'})}}>
+                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Chapter 1</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('exercisePage', {id: '2'})}}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Exercise 2</Text>
+                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('chapDetail', {id: '2'})}}>
+                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Chapter 2</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('exercisePage', {id: '3'})}}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Exercise 3</Text>
+                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('chapDetail', {id: '3'})}}>
+                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Chapter 3</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('exercisePage', {id: '4'})}}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Exercise 4</Text>
+                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('chapDetail', {id: '4'})}}>
+                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Chapter 4</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('exercisePage', {id: '5'})}}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Exercise 5</Text>
+                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('chapDetail', {id: '5'})}}>
+                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Chapter 5</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn3} onPress={() => { props.navigation.navigate('exercisePage', {id: '6'})}}>
+                    <TouchableOpacity style={styles.bttn3} onPress={() => { props.navigation.navigate('chapDetail', {id: '6'})}}>
                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>+</Text>
                     </TouchableOpacity>
                 </View>
-
             </View>
         </View>
     );
@@ -61,13 +58,6 @@ const ChapterDetail = (props) => {
 
 const styles = StyleSheet.create({
     bttn: {
-        // backgroundColor: "lightgrey",
-        // borderColor: "white",
-        // borderWidth: 2,
-        // padding: 2,
-        // alignItems: "center",
-        // // alignSelf: "flex-end",
-        // flex: 1,
         backgroundColor: "lightgrey",
         borderColor: "white",
         borderWidth: 2,
@@ -171,4 +161,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ChapterDetail;
+export default MiniSubjectDetail;
