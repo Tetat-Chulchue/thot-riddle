@@ -1,37 +1,51 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, Dimensions, TextInput } from 'react-native';
-import { Button, Input } from 'react-native-elements';
+import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image } from 'react-native';
+import { Button, Input, Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import color from '../constants/colors';
 
 const { width, height } = Dimensions.get('window');
 
-export default function Register(props) {
+export default function Login(props) {
     return (
         <View style={styles.container}>
-            <View style={styles.subContainer}>
-
-                <View style={{ flex: 2, alignItems: "center" }}>
-                    <Text style={styles.header}> Login </Text>
-                    <Image
-                        source={require('../assets/img/user_placeholder.png')}
-                        style={styles.userProfilePic}
-                    />
-                </View>
-
-                <View style={{ flex: 1 }}>
-                    <TextInput
+            <KeyboardAvoidingView style={styles.subContainer} behavior='position' keyboardVerticalOffset='-500'>
+                <Text h1 > Login </Text>
+                <Image
+                    source={require('../assets/img/logo_thoth.png')}
+                    style={{ width: width * 0.4, height: width * 0.4, marginTop: 50 }}
+                />
+                <View style={{ flexDirection: 'column', paddingTop: 50, flex: 1 }}>
+                    <Input
                         placeholder='Username'
-                        textContentType='username'
+                        leftIcon={
+                            <Icon
+                                name='user'
+                                size={24}
+                                color='black'
+                            />
+                        }
                     />
-                    <TextInput
+                    <Input
                         placeholder='Password'
-                        textContentType='password'
+                        leftIcon={
+                            <Icon
+                                name='lock'
+                                size={24}
+                                color='black'
+                            />
+                        }
                     />
-                    <TextInput
+                    <Input
                         placeholder='Confirm Password'
-                        textContentType='password'
+                        leftIcon={
+                            <Icon
+                                name='lock'
+                                size={24}
+                                color='black'
+                            />
+                        }
                     />
                     <Button
                         icon={
@@ -45,12 +59,13 @@ export default function Register(props) {
                         type='solid'
                         raised={true}
                         title='Register  '
-                        onPress={() => { }}
+                        onPress={() => { props.navigation.navigate('profile') }}
+                        containerStyle={{ marginTop: 20 }}
                     />
                 </View>
 
                 <View style={{ alignItems: "center" }}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 30 }}>
+                    <Text h4>
                         OR
                     </Text>
                     <Button
@@ -67,7 +82,7 @@ export default function Register(props) {
                         onPress={() => { props.navigation.navigate('login') }}
                     />
                 </View>
-            </View>
+            </KeyboardAvoidingView>
         </View>
     );
 }
@@ -89,13 +104,4 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignItems: 'center'
     },
-    header: {
-        fontSize: 30,
-        fontWeight: 'bold',
-    },
-    userProfilePic: {
-        resizeMode: 'contain',
-        width: width * 0.4,
-        height: height * 0.4,
-    }
 });

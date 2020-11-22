@@ -8,6 +8,7 @@ import { AntDesign, Ionicons } from '@expo/vector-icons';
 import Login from '../screen/Login';
 import Register from '../screen/Register';
 import Welcome from '../screen/Welcome';
+import Profile from '../screen/Profile';
 
 const authenNavigator = createStackNavigator(
     {
@@ -20,6 +21,9 @@ const authenNavigator = createStackNavigator(
         login: {
             screen: Login
         },
+        profile: {
+            screen: Profile
+        }
     },
     {
         defaultNavigationOptions: {

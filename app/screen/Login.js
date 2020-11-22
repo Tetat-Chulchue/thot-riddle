@@ -16,15 +16,26 @@ export default function Login(props) {
                     source={require('../assets/img/logo_thoth.png')}
                     style={{ width: width * 0.4, height: width * 0.4, marginTop: 50 }}
                 />
-                <View style={{ flexDirection: 'column', paddingTop: 50, flex: 1}}>
-                    <TextInput
+                <View style={{ flexDirection: 'column', paddingTop: 50, flex: 1 }}>
+                    <Input
                         placeholder='Username'
-                        textContentType='username'
+                        leftIcon={
+                            <Icon
+                                name='user'
+                                size={24}
+                                color='black'
+                            />
+                        }
                     />
-
-                    <TextInput
+                    <Input
                         placeholder='Password'
-                        textContentType='password'
+                        leftIcon={
+                            <Icon
+                                name='lock'
+                                size={24}
+                                color='black'
+                            />
+                        }
                     />
                     <Button
                         icon={
@@ -38,12 +49,12 @@ export default function Login(props) {
                         type='solid'
                         raised={true}
                         title='Login  '
-                        onPress={() => { }}
-                        containerStyle={{marginTop: 20}}
+                        onPress={() => { props.navigation.navigate('profile') }}
+                        containerStyle={{ marginTop: 20 }}
                     />
                 </View>
 
-                <View style={{ alignItems: "center"}}>
+                <View style={{ alignItems: "center" }}>
                     <Text h4>
                         OR
                     </Text>
