@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, Dimensions, TextInput, Button, ImagePropTypes } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions, TextInput } from 'react-native';
+import { Button, Input } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 import color from '../constants/colors';
 
@@ -9,33 +11,62 @@ export default function Register(props) {
     return (
         <View style={styles.container}>
             <View style={styles.subContainer}>
-                <Text style={styles.header}> Register </Text>
-                <Image
-                    source={require('../assets/img/user_placeholder.png')}
-                    style={styles.userProfilePic}
-                />
-                <TextInput
-                    placeholder='Username'
-                    textContentType='username'
-                    style={styles.form}
-                />
-                <TextInput
-                    placeholder='Password'
-                    textContentType='password'
-                    style={styles.form}
-                />
-                <TextInput
-                    placeholder='Confirm Password'
-                    textContentType='password'
-                    style={styles.form}
-                />
-                <Text style={{ fontWeight: 'bold', fontSize: 20 }}>
-                    OR
-                </Text>
-                <Button
-                    title='Login'
-                    onPress={() => { props.navigation.navigate('login') }}
-                />
+
+                <View style={{ flex: 2, alignItems: "center" }}>
+                    <Text style={styles.header}> Login </Text>
+                    <Image
+                        source={require('../assets/img/user_placeholder.png')}
+                        style={styles.userProfilePic}
+                    />
+                </View>
+
+                <View style={{ flex: 1 }}>
+                    <TextInput
+                        placeholder='Username'
+                        textContentType='username'
+                    />
+                    <TextInput
+                        placeholder='Password'
+                        textContentType='password'
+                    />
+                    <TextInput
+                        placeholder='Confirm Password'
+                        textContentType='password'
+                    />
+                    <Button
+                        icon={
+                            <Icon
+                                name="form"
+                                size={20}
+                                color="white"
+                            />
+                        }
+                        iconRight={true}
+                        type='solid'
+                        raised={true}
+                        title='Register  '
+                        onPress={() => { }}
+                    />
+                </View>
+
+                <View style={{ alignItems: "center" }}>
+                    <Text style={{ fontWeight: 'bold', fontSize: 30 }}>
+                        OR
+                    </Text>
+                    <Button
+                        icon={
+                            <Icon
+                                name="login"
+                                size={20}
+                                color="white"
+                            />
+                        }
+                        iconRight={true}
+                        type='clear'
+                        title='Login  '
+                        onPress={() => { props.navigation.navigate('login') }}
+                    />
+                </View>
             </View>
         </View>
     );
@@ -47,23 +78,20 @@ const styles = StyleSheet.create({
         backgroundColor: color.color_5,
         alignItems: 'center',
         paddingTop: 20,
-        flexDirection: 'collumn',
-        alignItems: 'stretch',
         padding: 10,
+        flexDirection: 'column',
+        alignItems: 'stretch',
     },
     subContainer: {
+        flex: 1,
         padding: 10,
         backgroundColor: color.color_4,
         borderRadius: 10,
         alignItems: 'center'
     },
-    form: {
-        borderBottomColor: '#000'
-    },
     header: {
         fontSize: 30,
         fontWeight: 'bold',
-        flex: 1,
     },
     userProfilePic: {
         resizeMode: 'contain',

@@ -11,7 +11,8 @@ export default function Welcome(props) {
     const introAnimation = () => {
         Animated.timing(fadingValue, {
             toValue: 1,
-            duration: 3000
+            duration: 3000,
+            useNativeDriver: false
         }).start();
     };
 
@@ -30,7 +31,7 @@ export default function Welcome(props) {
             <Animated.Text style={{
                 flex: 1,
                 fontSize: 30,
-                fontWeight: 'bolder',
+                fontWeight: 'bold',
                 paddingTop: 10,
                 opacity: fadingValue,
             }}>
