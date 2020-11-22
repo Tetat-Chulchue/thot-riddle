@@ -10,20 +10,16 @@ const { width, height } = Dimensions.get('window');
 export default function Login(props) {
     return (
         <View style={styles.container}>
-            <View style={styles.subContainer}>
-
-                <View style={{ flex: 5, alignItems: "center", flexDirection: 'column' }}>
-                    <Text h1 > Login </Text>
-                    <Image
-                        source={require('../assets/img/logo_thoth.png')}
-                        style={{ width: width*0.5, height: width*0.5, marginTop: 50}}
-                    />
-                </View>
-
-                <View style={{ flex: 2, flexDirection: 'column', paddingTop: 50 }}>
+            <KeyboardAvoidingView style={styles.subContainer} behavior='position' keyboardVerticalOffset='-500'>
+                <Text h1 > Login </Text>
+                <Image
+                    source={require('../assets/img/logo_thoth.png')}
+                    style={{ width: width * 0.4, height: width * 0.4, marginTop: 50 }}
+                />
+                <View style={{ flexDirection: 'column', paddingTop: 50, flex: 1}}>
                     <TextInput
                         placeholder='Username'
-                        textContentType='password'
+                        textContentType='username'
                     />
 
                     <TextInput
@@ -43,10 +39,11 @@ export default function Login(props) {
                         raised={true}
                         title='Login  '
                         onPress={() => { }}
+                        containerStyle={{marginTop: 20}}
                     />
                 </View>
 
-                <View style={{ alignItems: "center", flex: 1 }}>
+                <View style={{ alignItems: "center"}}>
                     <Text h4>
                         OR
                     </Text>
@@ -64,7 +61,7 @@ export default function Login(props) {
                         onPress={() => { props.navigation.navigate('register') }}
                     />
                 </View>
-            </View>
+            </KeyboardAvoidingView>
         </View>
     );
 }
@@ -86,9 +83,4 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignItems: 'center'
     },
-    userProfilePic: {
-        resizeMode: 'contain',
-        width: width * 0.4,
-        height: height * 0.4,
-    }
 });
