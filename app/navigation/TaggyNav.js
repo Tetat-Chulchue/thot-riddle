@@ -10,9 +10,21 @@ import MiniSubjectDetail from '../screen/taggy/MiniSubjectDetail';
 import ChapterDetail from '../screen/taggy/ChapterDetail';
 import ExercisePage from '../screen/taggy/ExercisePage';
 // import QuizPage from '../screen/taggy/QuizPage';
-// import CreateSubject from '../screen/taggy/CreateSubject';
-// import CreateChapter from '../screen/taggy/CreateChapter';
-// import CreateQuiz from '../screen/taggy/CreateQuiz';
+import CreateSubject from '../screen/CreateSubject';
+import CreateChapter from '../screen/CreateChapter';
+import CreateQuiz from '../screen/CreateQuiz';
+
+const createNav = createStackNavigator({
+    createSubject: {
+        screen: CreateSubject
+    },
+    createChapter: {
+        screen: CreateChapter
+    },
+    createQuiz: {
+        screen: CreateQuiz
+    },
+});
 
 const subjectNav = createStackNavigator({
     subjDetail: {
@@ -27,6 +39,9 @@ const subjectNav = createStackNavigator({
     exercisePage: {
         screen: ExercisePage
     },
+    createPage: {
+        screen: createNav
+    },
     // quizPage: {
     //     screen: QuizPage
     // },
@@ -38,17 +53,7 @@ const subjectNav = createStackNavigator({
     }
 );
 
-// const createNav = createStackNavigator({
-//     createSubject: {
-//         screen: CreateSubject
-//     },
-//     createChapter: {
-//         screen: CreateChapter
-//     },
-//     createQuiz: {
-//         screen: CreateQuiz
-//     },
-// });
+
 
 // const mainNav = createStackNavigator({
 //     subjectNav: {
