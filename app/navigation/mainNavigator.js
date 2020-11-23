@@ -6,11 +6,15 @@ import { createAppContainer } from 'react-navigation';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 
 import authenicationNavigator from './authenicationNavigator';
+import taggyNav from './TaggyNav';
 
 const mainNavigator = createStackNavigator(
     {
         authenication: {
             screen: authenicationNavigator
+        },
+        main: {
+            screen: taggyNav
         }
     },
     {

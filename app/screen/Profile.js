@@ -42,6 +42,7 @@ export default function Profile(props) {
                         title="   Select Subject"
                         buttonStyle={{ backgroundColor: color.color_5 }}
                         containerStyle={{ margin: 10 }}
+                        onPress={() => {props.navigation.navigate('subjDetail')}}
                     />
                     <Button
                         icon={
