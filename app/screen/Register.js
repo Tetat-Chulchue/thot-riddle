@@ -1,17 +1,35 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image } from 'react-native';
+import { useDispatch } from 'react-redux'
 import { Button, Input, Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import color from '../constants/colors';
+import User from '../model/User';
+import { updateUser } from '../store/action/userAction';
 
 const { width, height } = Dimensions.get('window');
 
 export default function Login(props) {
+
+    const dispatch = useDispatch()
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setconfirmPassword] = useState('');
+
+    const register = (username, password, confirmPassword) => {
+        if (confirmPassword === password) {
+            let user = new User(username, password, 'student');
+            dispatch(updateUser(user));
+            props.navigation.navigate('profile');
+        }
+    }
+
     return (
         <View style={styles.container}>
             <KeyboardAvoidingView style={styles.subContainer} behavior='position' keyboardVerticalOffset='-500'>
-                <Text h1 > Login </Text>
+                <Text h1 > Register </Text>
                 <Image
                     source={require('../assets/img/logo_thoth.png')}
                     style={{ width: width * 0.4, height: width * 0.4, marginTop: 50 }}
@@ -26,6 +44,7 @@ export default function Login(props) {
                                 color='black'
                             />
                         }
+                        onChangeText={(text) => { setUsername(text) }}
                     />
                     <Input
                         placeholder='Password'
@@ -36,6 +55,7 @@ export default function Login(props) {
                                 color='black'
                             />
                         }
+                        onChangeText={(text) => { setPassword(text) }}
                     />
                     <Input
                         placeholder='Confirm Password'
@@ -46,6 +66,7 @@ export default function Login(props) {
                                 color='black'
                             />
                         }
+                        onChangeText={(text) => { setconfirmPassword(text) }}
                     />
                     <Button
                         icon={
@@ -59,7 +80,7 @@ export default function Login(props) {
                         type='solid'
                         raised={true}
                         title='Register  '
-                        onPress={() => { props.navigation.navigate('profile') }}
+                        onPress={() => { register(username, password, confirmPassword) }}
                         containerStyle={{ marginTop: 20 }}
                     />
                 </View>

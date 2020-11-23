@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image } from 'react-native';
 import { Button, Input, Text, Avatar } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { useSelector } from 'react-redux'; 
 
 import color from '../constants/colors';
 
 const { width, height } = Dimensions.get('window');
 
 export default function Profile(props) {
+
+    const user = useSelector( (state) => state.user.user);
+    console.log(user);
     return (
         <View style={styles.container}>
             <View style={styles.subContainer}>
