@@ -17,7 +17,7 @@ const { width, height } = Dimensions.get('window');
 import { AntDesign } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import Choise from './Choise';
-import IsQuiz from './IsQuiz'
+import IsQuiz from './IsQuiz';
 
 const ExercisePage = (props) => {
     const Id = props.navigation.getParam("id");

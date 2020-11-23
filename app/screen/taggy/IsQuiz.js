@@ -17,7 +17,20 @@ const { width, height } = Dimensions.get('window');
 import { AntDesign } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 
-var bg = "white";
+var bg = "lightgrey";
+// var Rbg = "lightgrey";
+
+export function IsRight(data, stat) {
+    if(data == "right"){
+        bg = "green"
+        // return bg = "green";
+        return bg;
+    }
+    if(data != "right" && stat == "choose"){
+        return bg = "red";
+        console.log("RED");
+    }
+}
 
 const IsQuiz = (props) => {
     // const choice = props.choice;

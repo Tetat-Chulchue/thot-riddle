@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     View,
     Text,
@@ -16,25 +16,41 @@ import color from '../../constants/colors';
 const { width, height } = Dimensions.get('window');
 import { AntDesign } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
+// import IsQuiz from './IsQuiz';
+import { IsRight } from './IsQuiz';
 
-var bg = "white";
+// var bg = "lightgrey";
+
 
 const Choise = (props) => {
-    // const choice = props.choice;
+    const [bg, setBG] = useState('lightgrey');
     const choise = "choise";
     if (choise == "choise"){
         return (
             <View style={styles.nani}>
-                <TouchableOpacity style={styles.bttn2} onPress={() => { style={backgroundColor: "green"} }}>
+                <TouchableOpacity style={{
+                    backgroundColor: bg,
+                    borderColor: "white",
+                    borderWidth: 2,
+                    padding: 5,
+                    paddingLeft: 15,
+                    paddingRight: 15,
+                    paddingBottom: 15,
+                    paddingTop: 15,
+                    margin: 3,
+                    alignItems: "stretch",
+                    marginLeft: "5%",
+                    marginRight: "5%",
+                }} onPress={() => {setBG(IsRight("right", "not"))}}>
                     <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 1</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.bttn2} >
+                <TouchableOpacity style={styles.bttn2} onPress={() => {IsRight("not", "not")}}>
                     <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 2</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.bttn2} >
+                <TouchableOpacity style={styles.bttn2} onPress={() => {IsRight("not", "choose")}}>
                     <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 3</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.bttn2} >
+                <TouchableOpacity style={styles.bttn2} onPress={() => {IsRight("not", "not")}}>
                     <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 4</Text>
                 </TouchableOpacity>
             </View>)
@@ -65,7 +81,7 @@ const styles = StyleSheet.create({
         flex: 2,
     },
     bttn2: {
-        backgroundColor: "lightgrey",
+        backgroundColor: "whitegrey",
         borderColor: "white",
         borderWidth: 2,
         padding: 5,
@@ -140,7 +156,7 @@ const styles = StyleSheet.create({
         // padding: 5,
         // flex: 9,
         // textDecorationLine: "underline",
-        backgroundColor: bg,
+        backgroundColor: "white",
         borderColor: "black",
         borderWidth: 2,
         padding: 5,
