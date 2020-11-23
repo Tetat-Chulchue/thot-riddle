@@ -3,7 +3,7 @@ class Question {
         this.question = question;
         this.type = type;
         this.answer = answer;
-        this.choises = [];
+        this.choises = choises;
     }
 
     checkAnswer(answer) {
