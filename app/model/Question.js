@@ -15,6 +15,8 @@ class Question {
     }
 }
 
+export default Question;
+
 // type (choise, fill)
 
 // if type is "fill" than choises field and answer is null

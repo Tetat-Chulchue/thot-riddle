@@ -13,3 +13,5 @@ class User {
     updateHistoty() {}
     enroll() {}
 }
+
+export default User;

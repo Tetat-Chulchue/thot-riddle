@@ -9,3 +9,5 @@ class Chapter {
         this.exercises.push(exercise);
     }
 }
+
+export default Chapter;

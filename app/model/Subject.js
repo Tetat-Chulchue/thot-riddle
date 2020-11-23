@@ -13,3 +13,5 @@ class Subject {
         this.chapters.push(chapter);
     }
 }
+
+export default Subject;

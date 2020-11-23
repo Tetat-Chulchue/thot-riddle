@@ -10,4 +10,6 @@ class Exercise {
     };
 }
 
+export default Exercise;
+
 // type (exercise, quiz)
