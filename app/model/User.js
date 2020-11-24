@@ -1,10 +1,10 @@
 class User {
-    constructor(username, password, role, profileImage) {
+    constructor(username, password, role, profileImage, subjects) {
         this.username = username;
         this.password = password;
         this.profileImage = profileImage;
         this.role = role;
-        this.subjects = [];
+        this.subjects = subjects;
         this.history = [];
         this.trophies = [];
         this.achievements = [];
