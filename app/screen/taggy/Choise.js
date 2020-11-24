@@ -24,6 +24,10 @@ import { IsRight } from './IsQuiz';
 
 const Choise = (props) => {
     const [bg, setBG] = useState('lightgrey');
+    // this.state={
+    //     bg = "lightgrey"
+    // }
+    const data = useSelector( (state) => state.user.DATA);
     const choise = "choise";
     if (choise == "choise"){
         return (
@@ -44,13 +48,26 @@ const Choise = (props) => {
                 }} onPress={() => {setBG(IsRight("right", "not"))}}>
                     <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 1</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.bttn2} onPress={() => {IsRight("not", "not")}}>
+                <TouchableOpacity style={{
+                    backgroundColor: bg,
+                    borderColor: "white",
+                    borderWidth: 2,
+                    padding: 5,
+                    paddingLeft: 15,
+                    paddingRight: 15,
+                    paddingBottom: 15,
+                    paddingTop: 15,
+                    margin: 3,
+                    alignItems: "stretch",
+                    marginLeft: "5%",
+                    marginRight: "5%",
+                }} onPress={() => {setBG(IsRight("not", "not"))}}>
                     <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 2</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.bttn2} onPress={() => {IsRight("not", "choose")}}>
+                <TouchableOpacity style={styles.bttn2} onPress={() => {setBG(IsRight("not", "choose"))}}>
                     <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 3</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.bttn2} onPress={() => {IsRight("not", "not")}}>
+                <TouchableOpacity style={styles.bttn2} onPress={() => {setBG(IsRight("not", "not"))}}>
                     <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 4</Text>
                 </TouchableOpacity>
             </View>)

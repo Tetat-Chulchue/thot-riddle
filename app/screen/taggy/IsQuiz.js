@@ -25,11 +25,13 @@ export function IsRight(data, stat) {
         bg = "green"
         // return bg = "green";
         return bg;
-    }
-    if(data != "right" && stat == "choose"){
+    }else if(data != "right" && stat == "choose"){
         return bg = "red";
         console.log("RED");
+    }else{
+        return bg = "lightgrey";
     }
+    // data == "right" ? bg = "green" : 
 }
 
 const IsQuiz = (props) => {
