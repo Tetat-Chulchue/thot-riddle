@@ -77,7 +77,10 @@ export default function SubjectDetail(props) {
     let delSub;
     if (user.role === 'teacher'){
         delSub = (
-            <AntDesign name="delete" size={24} color="black" style={{ flex: 1}} onPress={()=> {console.log("Wat")}}/>
+            <TouchableOpacity style={{alignSelf: 'flex-end'}}>
+                <AntDesign name="delete" size={24} color="black" style={{ flex: 1}} onPress={()=> {console.log("Wat")}}/>
+            </TouchableOpacity>
+            // <AntDesign name="delete" size={24} color="black" style={{ flex: 1}} onPress={()=> {console.log("Wat")}}/>
         )
     }else{
         delSub = (<TouchableOpacity ></TouchableOpacity>)
@@ -118,8 +121,8 @@ export default function SubjectDetail(props) {
                                     props.navigation.navigate('miniSubjDetail', { name: element.name, detail: element.detail, chapters: element.chapters })
                                     dispatch(addHistory(element));
                                 }}>
-                                    <TouchableOpacity style={{flex: 19}}>
-                                        <Text style={{ flex: 19, color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element.name}</Text>
+                                    <TouchableOpacity>
+                                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element.name}</Text>
                                     </TouchableOpacity>
                                     {delSub}
                                     {/* <AntDesign name="delete" size={24} color="black" style={{ flex: 1}} onPress={()=> {console.log("Wat")}}/> */}

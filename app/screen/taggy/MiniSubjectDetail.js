@@ -21,6 +21,7 @@ const MiniSubjectDetail = (props) => {
     const name = props.navigation.getParam("name");
     const detail = props.navigation.getParam("detail");
     const chapters = props.navigation.getParam("chapters");
+    
     // console.log(name);
     // console.log(detail);
     // console.log(chapters);
