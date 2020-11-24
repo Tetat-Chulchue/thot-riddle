@@ -1,9 +1,8 @@
 import React, { Component, useState } from 'react';
 import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image, Alert } from 'react-native';
-import { useDispatch } from 'react-redux'
 import { Button, Input, Text, CheckBox } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
-import { useSelector } from 'react-redux'; 
+import { useSelector, useDispatch } from 'react-redux';
 
 import color from '../constants/colors';
 import User from '../model/User';
