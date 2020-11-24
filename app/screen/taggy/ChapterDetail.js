@@ -23,9 +23,9 @@ const ChapterDetail = (props) => {
     const name = props.navigation.getParam("name");
     const detail = props.navigation.getParam("detail");
     const exercises = props.navigation.getParam("exercises");
-    console.log(name);
-    console.log(detail);
-    console.log(exercises);
+    // console.log(name);
+    // console.log(detail);
+    // console.log(exercises);
     const user = useSelector( (state) => state.user.currentUser);
     let execlusive;
     if (user.role === 'teacher'){

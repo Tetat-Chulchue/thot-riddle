@@ -18,16 +18,19 @@ import { AntDesign } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import Choise from './Choise';
 // import IsQuiz from './IsQuiz';
+import { ListItem } from 'react-native-elements';
 
 const ExercisePage = (props) => {
     const name = props.navigation.getParam("name");
     const type = props.navigation.getParam("type");
     const questions = props.navigation.getParam("questions");
-    console.log(name);
-    console.log(type);
-    console.log(questions);
+    // console.log(name);
+    // console.log(type);
+    // console.log(questions);
     const [quesIndex, setQuesIndex] = useState(0);
     // const [quesType, setQuesType] = useState('');
+
+    
     return (
         <View style={styles.container}>
             <View style={styles.subContainer}>
@@ -41,31 +44,7 @@ const ExercisePage = (props) => {
                     <Text style={{ color: color.color_1, fontSize: 23, fontWeight: 'bold', flex: 1, alignSelf: "flex-start" }}>Question</Text>
                     <Text style={{ color: color.color_1, fontSize: 18, flex: 6, alignSelf: "flex-start" }}>{questions[quesIndex].question}</Text>
                 </View>
-                <Choise style={styles.nani } type={questions[quesIndex].type} isQuiz={type} questions={questions[quesIndex].choises} right={questions[quesIndex].choises}/>
-                {/* <View style={styles.nani}>
-                    <IsQuiz style={styles.blacky} type={type}/>
-                    {/* <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.pop() }}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 1</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} >
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 2</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} >
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 3</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} >
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 4</Text>
-                    </TouchableOpacity>
-                    <View style={styles.blacky}>
-                        <TouchableOpacity style={styles.bttn3} >
-                            <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Check</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.bttn3} >
-                            <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Next ></Text>
-                        </TouchableOpacity>
-                    </View>
-                </View> */}
-
+                <Choise style={styles.nani } type={questions[quesIndex].type} isQuiz={type} questions={questions[quesIndex].choises} answer={questions[quesIndex].answer}/>
             </View>
         </View>
     );

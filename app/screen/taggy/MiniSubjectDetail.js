@@ -21,9 +21,9 @@ const MiniSubjectDetail = (props) => {
     const name = props.navigation.getParam("name");
     const detail = props.navigation.getParam("detail");
     const chapters = props.navigation.getParam("chapters");
-    console.log(name);
-    console.log(detail);
-    console.log(chapters);
+    // console.log(name);
+    // console.log(detail);
+    // console.log(chapters);
     const user = useSelector( (state) => state.user.currentUser);
     let execlusive;
     if (user.role === 'teacher'){

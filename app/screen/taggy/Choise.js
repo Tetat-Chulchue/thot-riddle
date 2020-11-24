@@ -17,19 +17,48 @@ const { width, height } = Dimensions.get('window');
 import { AntDesign } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 // import IsQuiz from './IsQuiz';
-import { IsRight } from './IsQuiz';
+// import { IsRight } from './IsQuiz';
 import { ListItem } from 'react-native-elements';
 import { useSelector } from 'react-redux';
 
 
 const Choise = (props) => {
-    const [bg, setBG] = useState('lightgrey');
+    const [bg, setBG] = useState(['lightgrey', 'lightgrey', 'lightgrey', 'lightgrey']);
+    const [isAnswered, setIsAnswered] = useState(false);
     const choise = props.type;
     let a = '';
     const questions = props.questions;
+    const answer = props.answer;
     console.log(questions);
+    console.log(answer);
+    // let abc;
+    // if (abc == an)
     let exPart;
     const isQuiz = props.isQuiz;
+
+    const IsRight = function (answer, index) {
+        let new_bg ='';
+        console.log(isAnswered)
+        if (!isAnswered) {
+            if(index == answer){
+                new_bg = ['lightgrey', 'lightgrey', 'lightgrey', 'lightgrey']
+                new_bg[index] = "green"
+                console.log(new_bg)
+                setIsAnswered(true)
+                return new_bg;
+            }else if(index != answer){
+                new_bg = ['lightgrey', 'lightgrey', 'lightgrey', 'lightgrey']
+                new_bg[index] = "red";
+                new_bg[answer] = "green";
+                console.log(new_bg)
+                setIsAnswered(true)
+                return new_bg;
+            }
+        } else {
+            return bg;
+        }
+    }
+
     if (isQuiz === 'exercise'){
         exPart = (
             <View style={styles.blacky}>
@@ -57,7 +86,7 @@ const Choise = (props) => {
                 {
                     questions.map((element, index) => (
                         <ListItem key={index} bottomDivider containerStyle={{
-                            backgroundColor: bg,
+                            backgroundColor: bg[index],
                             borderColor: "white",
                             borderWidth: 2,
                             padding: 5,
@@ -69,38 +98,13 @@ const Choise = (props) => {
                             alignItems: "stretch",
                             marginLeft: "5%",
                             marginRight: "5%",
-                        }} onPress={() => { setBG(IsRight("right", "not")) }}>
+                        }} onPress={() => { setBG(IsRight(answer, index)) }}>
                             <TouchableOpacity>
                                 <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element}</Text>
                             </TouchableOpacity>
                         </ListItem>
                     ))
                 }
-                {/* <TouchableOpacity style={{
-                    backgroundColor: bg,
-                    borderColor: "white",
-                    borderWidth: 2,
-                    padding: 5,
-                    paddingLeft: 15,
-                    paddingRight: 15,
-                    paddingBottom: 15,
-                    paddingTop: 15,
-                    margin: 3,
-                    alignItems: "stretch",
-                    marginLeft: "5%",
-                    marginRight: "5%",
-                }} onPress={() => {setBG(IsRight("right", "not"))}}>
-                    <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 1</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.bttn2} onPress={() => {setBG(IsRight("not", "not"))}}>
-                    <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 2</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.bttn2} onPress={() => {setBG(IsRight("not", "choose"))}}>
-                    <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 3</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.bttn2} onPress={() => {setBG(IsRight("not", "not"))}}>
-                    <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 4</Text>
-                </TouchableOpacity> */}
                 {exPart}
             </View>)
     } else {
@@ -111,10 +115,9 @@ const Choise = (props) => {
             </View>
         )
     }
-
-
-
 };
+
+
         
 const styles = StyleSheet.create({
     bttn: {
