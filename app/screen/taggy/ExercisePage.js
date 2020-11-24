@@ -7,7 +7,7 @@ import {
     Platform,
     Image,
     Dimensions,
-    FlatList,
+    Alert,
     TouchableOpacity,
 } from "react-native";
 // import CustomHeaderButton from "../components/CustomHeaderButton";
@@ -22,6 +22,10 @@ import { setBG } from './Choise';
 import { ListItem } from 'react-native-elements';
 
 const ExercisePage = (props) => {
+    const [count, setCount] = useState(0);
+    const callback = (data) => {
+        setCount(data);
+    }
     const name = props.navigation.getParam("name");
     const type = props.navigation.getParam("type");
     const questions = props.navigation.getParam("questions");
@@ -30,6 +34,27 @@ const ExercisePage = (props) => {
     // console.log(questions);
     const [quesIndex, setQuesIndex] = useState(0);
     // const [quesType, setQuesType] = useState('');
+    let final = questions.length;
+    let word = 'Next';
+    let back = 'setQuesIndex(quesIndex + 1)';
+    if (quesIndex == final - 1){
+        word = 'Finish'
+    }else if(quesIndex > final - 1){
+        console.log(count);
+        Alert.alert(
+            "Congratulation",
+            "You have answered " + count + " correctly",
+            [
+                { text: "OK", onPress: () => console.log("OK Pressed") }
+            ],
+            { cancelable: false }
+        );
+        return props.navigation.pop();
+    }
+
+    // if (word == 'Finish'){
+    //     return props.navigation.pop(); 
+    // }
 
     
     return (
@@ -45,10 +70,10 @@ const ExercisePage = (props) => {
                     <Text style={{ color: color.color_1, fontSize: 23, fontWeight: 'bold', flex: 1, alignSelf: "flex-start" }}>Question</Text>
                     <Text style={{ color: color.color_1, fontSize: 18, flex: 6, alignSelf: "flex-start" }}>{questions[quesIndex].question}</Text>
                 </View>
-                <Choise style={styles.nani } type={questions[quesIndex].type} isQuiz={type} questions={questions[quesIndex].choises} answer={questions[quesIndex].answer}/>
+                <Choise style={styles.nani } quesIndex={quesIndex} final={final} type={questions[quesIndex].type} isQuiz={type} questions={questions[quesIndex].choises} answer={questions[quesIndex].answer} end={callback}/>
                 <View style={styles.blacky}>
                     <TouchableOpacity style={styles.bttn3} onPress={() => {setQuesIndex(quesIndex + 1)}}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Next</Text>
+                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{word}</Text>
                     </TouchableOpacity>
                 </View>
             </View>

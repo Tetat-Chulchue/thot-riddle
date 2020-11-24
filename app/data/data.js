@@ -7,8 +7,8 @@ import Question from "../model/Question";
 export const DATA = [
     new Subject(
         1,
-        "Math",
-        "Basic Math",
+        "Introduction tp Math 1",
+        "This is subject about Basic Math",
         [
             new Chapter(
                 "Math Chapter 1",

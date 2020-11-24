@@ -7,7 +7,7 @@ import {
     Platform,
     Image,
     Dimensions,
-    FlatList,
+    Alert,
     TouchableOpacity,
 } from "react-native";
 // import CustomHeaderButton from "../components/CustomHeaderButton";
@@ -24,13 +24,27 @@ import { useSelector } from 'react-redux';
 
 const Choise = (props) => {
     const [bg, setBG] = useState(['lightgrey', 'lightgrey', 'lightgrey', 'lightgrey']);
+    const [count, setCount] = useState(0);
     const [isAnswered, setIsAnswered] = useState(false);
     const choise = props.type;
+    const final = props.final;
+    const quesIndex = props.quesIndex;
+    if(quesIndex == final - 1){
+        props.end(count)
+        // Alert.alert(
+        //     "Congratulation!",
+        //     "You have answer correct for " + count + " question!",
+        //     [
+        //         { text: "OK", onPress: () => console.log("Im on fire") }
+        //     ],
+        //     { cancelable: false }
+        // );
+    }
     let a = '';
     const questions = props.questions;
     const answer = props.answer;
-    console.log(questions);
-    console.log(answer);
+    // console.log(questions);
+    // console.log(answer);
     // let abc;
     // if (abc == an)
     let exPart;
@@ -48,6 +62,7 @@ const Choise = (props) => {
                 new_bg[index] = "green"
                 console.log(new_bg)
                 setIsAnswered(true)
+                setCount(count + 1);
                 return new_bg;
             }else if(index != answer){
                 new_bg = ['lightgrey', 'lightgrey', 'lightgrey', 'lightgrey']
@@ -101,7 +116,7 @@ const Choise = (props) => {
                             alignItems: "stretch",
                             marginLeft: "5%",
                             marginRight: "5%",
-                        }} onPress={() => { setBG(IsRight(answer, index)) }}>
+                        }} onPress={() => { setBG(IsRight(answer, index))}}>
                             <TouchableOpacity>
                                 <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element}</Text>
                             </TouchableOpacity>
