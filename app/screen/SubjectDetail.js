@@ -51,14 +51,14 @@ export default function SubjectDetail(props) {
     //   );
     // console.log(data.map());
     let execlusive;
-    if (user == 'teacher'){
+    if (user.role === 'teacher'){
         execlusive = (
-            <TouchableOpacity onPress={() => { props.navigation.navigate('miniSubjDetail', { name: element.name, detail: element.detail, chapters: element.chapters }) }} >
-                <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element.name}</Text>
+            <TouchableOpacity onPress={() => { props.navigation.navigate('createSubject', {context: "Subject"}) }} style={styles.bttn3}>
+                <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Create Subject</Text>
             </TouchableOpacity>
         )
     }else{
-        
+        execlusive = (<TouchableOpacity ></TouchableOpacity>)
     }
     return (
         <View style={styles.container}>
@@ -67,9 +67,9 @@ export default function SubjectDetail(props) {
                     <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.pop() }}>
                         <AntDesign name="left" size={24} color="black" style={{ flex: 1 }}/>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn} onPress={() => { props.navigation.navigate('createSubject', {context: 'Subject'})}}>
+                    {/* <TouchableOpacity style={styles.bttn} onPress={() => { props.navigation.navigate('createSubject', {context: 'Subject'})}}>
                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold' }}>Create Subject</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
                 <View style={styles.search}>
                     <TextInput
@@ -92,7 +92,7 @@ export default function SubjectDetail(props) {
                             </ListItem>
                         ))
                     }
-                {abc}
+                {execlusive}
                 </View>
 
             </View>

@@ -48,7 +48,7 @@ export const DATA = [
         ]
     ),
     new Subject(2, "English 1", "Foundation Emglish", []),
-    new Subject(3, "CS Unplugged", "Computer Science without a computer", [])
+    new Subject(3, "CS Unplugged", "Computer Science without a computer", []),
 ];
 
 // export const CHAPTER = [
