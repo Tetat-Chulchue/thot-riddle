@@ -72,19 +72,15 @@ export default function SubjectDetail(props) {
                 <View style={styles.nani}>
                     {
                         data.map((element, index) => (
-                            <ListItem key={index} bottomDivider  containerStyle={styles.bttn2}>
+                            <ListItem key={index} bottomDivider  containerStyle={styles.bttn2} >
                                 {/* <ListItem.Content> */}
-                                    <TouchableOpacity onPress={() => { props.navigation.navigate('miniSubjDetail', { element }) }} >
+                                    <TouchableOpacity onPress={() => { props.navigation.navigate('miniSubjDetail', { name: element.name, detail: element.detail, chapter: [element.chapter] }) }} >
                                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element.name}</Text>
                                     </TouchableOpacity>
                                 {/* </ListItem.Content> */}
                             </ListItem>
                         ))
                     }
-                    {/* <SubList listData={data} navigation={props.navigation} /> */}
-                    {/* <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('miniSubjDetail', {id: '1'}) }}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{data[0].name}</Text>
-                    </TouchableOpacity> */}
                 </View>
 
             </View>
