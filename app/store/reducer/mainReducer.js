@@ -1,4 +1,4 @@
-import { LOGIN, ADD_HISTORY, ADD_SUBJECT, ADD_CHAPTER, CREATE_QUIZ, CREATE_QUESTION } from "../action/userAction";
+import { LOGIN, ADD_HISTORY, ADD_SUBJECT, ADD_CHAPTER, CREATE_QUIZ, CREATE_QUESTION, ADD_STUDENT } from "../action/userAction";
 import { USER, DATA } from "../../data/data";
 
 const initialState = {
@@ -47,6 +47,8 @@ const mainReducer = (state = initialState, action) => {
             console.log(quizOfQuestion)
             quizOfQuestion.addQuestion(action.question);
             return {...state, data: questionData}
+        case ADD_STUDENT:
+            let studentData = state.data;
         default:
             return state;
     }

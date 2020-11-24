@@ -27,14 +27,22 @@ const MiniSubjectDetail = (props) => {
     // console.log(chapters);
     const user = useSelector( (state) => state.user.currentUser);
     let execlusive;
+    let addStd;
     if (user.role === 'teacher'){
         execlusive = (
             <TouchableOpacity onPress={() => { props.navigation.navigate('createSubject', {context: "Chapter", subject: subject}) }} style={styles.bttn3}>
                 <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Create Chapter</Text>
             </TouchableOpacity>
         )
+        addStd = (
+            <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.navigate('addStudent', {subject: subject}) }}>
+                <AntDesign name="plus" size={24} color="black" style={{ flex: 1, alignSelf: 'flex-end' }} />
+            </TouchableOpacity>
+            // <AntDesign name="delete" size={24} color="black" style={{ flex: 1}} onPress={()=> {console.log("Wat")}}/>
+        )
     }else{
         execlusive = (<TouchableOpacity ></TouchableOpacity>)
+        addStd = (<TouchableOpacity ></TouchableOpacity>)
     }
     return (
         <View style={styles.container}>
@@ -44,6 +52,7 @@ const MiniSubjectDetail = (props) => {
                         <AntDesign name="left" size={24} color="black" style={{ flex: 1 }} />
                     </TouchableOpacity>
                     <Text style={{ color: color.color_1, fontSize: 23, fontWeight: 'bold', flex: 6}}>{name}</Text>
+                    {addStd}
                 </View>
                 <View style={styles.search}>
                     <Text style={{ color: color.color_1, fontSize: 23, fontWeight: 'bold', flex: 1, alignSelf: "flex-start"}}>Detail</Text>

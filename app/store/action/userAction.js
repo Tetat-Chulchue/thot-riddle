@@ -2,8 +2,10 @@ export const LOGIN = "LOGIN";
 export const ADD_HISTORY = "ADD_HISTORY";
 export const ADD_SUBJECT = "ADD_SUBJECT";
 export const ADD_CHAPTER = "ADD_CHAPTER";
-export const CREATE_QUIZ = "CREATE_QUIZ"
-export const CREATE_QUESTION = "CREATE_QUESTION"
+export const CREATE_QUIZ = "CREATE_QUIZ";
+export const CREATE_QUESTION = "CREATE_QUESTION";
+export const ADD_STUDENT = "ADD_STUDENT";
+
 
 export const login = (user) => {
     return {type: LOGIN, user: user};
@@ -28,4 +30,8 @@ export const createQuiz = (subject, chapter, quiz) => {
 export const createQuestion = (subject, chapter, quiz, question) => {
     return {type: CREATE_QUESTION, subject: subject, chapter: chapter, quiz: quiz, question: question};
 };
+
+export const addStudent = (user, subject) => {
+    return {type: ADD_STUDENT, user: user, subject: subject}
+}
 

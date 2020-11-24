@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {
     View,
     Text,
@@ -27,6 +27,10 @@ export default function SubjectDetail(props) {
     const dispatch = useDispatch();
     const data = useSelector( (state) => state.user.data);
     const user = useSelector( (state) => state.user.currentUser);
+
+    const subject = props.navigation.getParam('subject');
+
+    const [username, setUsername] = useState('');
     // const displayedSub = data.filter(
     //     (meal) => meal.categoryIds.indexOf(catId) >= 0
     //   );
