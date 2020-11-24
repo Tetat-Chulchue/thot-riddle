@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image } from 'react-native';
 import { Button, Input, Text, Avatar, CheckBox } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { useSelector } from 'react-redux'; 
+import { useSelector, useDispatch } from 'react-redux';
 
 import color from '../constants/colors';
+import { login } from '../store/action/userAction';
 
 const { width, height } = Dimensions.get('window');
 
 export default function Profile(props) {
 
-    const user = useSelector( (state) => state.user.currentUser);
-    console.log(user.history);
+    const dispatch = useDispatch()
+
+    const user = useSelector((state) => state.user.currentUser);
 
     return (
         <View style={styles.container}>
@@ -47,7 +49,7 @@ export default function Profile(props) {
                         title="   Select Subject"
                         buttonStyle={{ backgroundColor: color.color_5 }}
                         containerStyle={{ margin: 10 }}
-                        onPress={() => {props.navigation.navigate('subjDetail')}}
+                        onPress={() => { props.navigation.navigate('subjDetail') }}
                     />
                     <Button
                         icon={
@@ -60,7 +62,15 @@ export default function Profile(props) {
                         title="   History"
                         buttonStyle={{ backgroundColor: color.color_5 }}
                         containerStyle={{ margin: 10 }}
-                        onPress={() => {props.navigation.navigate('history')}}
+                        onPress={() => { props.navigation.navigate('history') }}
+                    />
+                    <Button
+                        title="Logout"
+                        buttonStyle={{ backgroundColor: color.color_5 }}
+                        containerStyle={{ margin: 10 }}
+                        onPress={() => {
+                            props.navigation.popToTop();
+                        }}
                     />
                 </View>
 
