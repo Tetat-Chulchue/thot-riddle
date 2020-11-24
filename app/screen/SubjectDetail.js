@@ -17,9 +17,38 @@ const { width, height } = Dimensions.get('window');
 import { AntDesign } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
+import { useSelector } from 'react-redux';
+// import SubList from "../components/SubList";
+import { ListItem } from 'react-native-elements'
+
+// const SubList = ({ listData, navigation }) => {
+//     const renderMealItem = (itemData) => {
+//       return (
+//         //เขียนโค้ดเพิ่ม
+//         <MealItem
+//           title={itemData.item.title}
+//           duration={itemData.item.duration}
+//           complexity={itemData.item.complexity}
+//           affordability={itemData.item.affordability}
+//           image={itemData.item.imageUrl}
+//           onSelectMeal={() => {
+//             // เขียนโค้ดเพิ่ม
+//             navigation.navigate("S3", {
+//               id: itemData.item.id,
+//               mealTitle: itemData.item.title,
+//             });
+//           }}
+//         />
+//       );
+//     };
+
 
 export default function SubjectDetail(props) {
-
+    const data = useSelector( (state) => state.user.data);
+    // const displayedSub = data.filter(
+    //     (meal) => meal.categoryIds.indexOf(catId) >= 0
+    //   );
+    // console.log(data.map());
     return (
         <View style={styles.container}>
             <View style={styles.subContainer}>
@@ -27,11 +56,9 @@ export default function SubjectDetail(props) {
                     <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.pop() }}>
                         <AntDesign name="left" size={24} color="black" style={{ flex: 1 }}/>
                     </TouchableOpacity>
-                    {/* <AntDesign name="left" size={24} color="black" style={{ flex: 1 }} onPress={() => { props.navigation.pop() }}/> */}
                     <TouchableOpacity style={styles.bttn} onPress={() => { props.navigation.navigate('createSubject') }}>
                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold' }}>Create Subject</Text>
                     </TouchableOpacity>
-                    {/* <Button title="Create Subject" type="clear" style={styles.bttn}/> */}
                 </View>
                 <View style={styles.search}>
                     <TextInput
@@ -41,28 +68,23 @@ export default function SubjectDetail(props) {
                     />
                     <AntDesign name="search1" size={24} color="black" style={{ flex: 1 }} />
                 </View>
+                
                 <View style={styles.nani}>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('miniSubjDetail', {id: '1'}) }}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Subject 1</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('miniSubjDetail', {id: '2'}) }}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Subject 2</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('miniSubjDetail', {id: '3'}) }}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Subject 3</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('miniSubjDetail', {id: '4'}) }}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Subject 4</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('miniSubjDetail', {id: '5'}) }}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Subject 5</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('miniSubjDetail', {id: '6'}) }}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Subject 6</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('miniSubjDetail', {id: '7'}) }}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Subject 7</Text>
-                    </TouchableOpacity>
+                    {
+                        data.map((element, index) => (
+                            <ListItem key={index} bottomDivider  containerStyle={styles.bttn2}>
+                                {/* <ListItem.Content> */}
+                                    <TouchableOpacity onPress={() => { props.navigation.navigate('miniSubjDetail', { element }) }} >
+                                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element.name}</Text>
+                                    </TouchableOpacity>
+                                {/* </ListItem.Content> */}
+                            </ListItem>
+                        ))
+                    }
+                    {/* <SubList listData={data} navigation={props.navigation} /> */}
+                    {/* <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('miniSubjDetail', {id: '1'}) }}>
+                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{data[0].name}</Text>
+                    </TouchableOpacity> */}
                 </View>
 
             </View>
@@ -98,10 +120,15 @@ const styles = StyleSheet.create({
         padding: 5,
         paddingLeft: 15,
         paddingRight: 15,
+        width: "100%",
         margin: 3,
-        alignItems: "stretch",
-        marginLeft: "5%",
-        marginRight: "5%",
+        alignItems: "center",
+        borderRadius: 5,
+        marginBottom: 10,
+        // paddingTop
+        // textAlign: "center",
+        // marginLeft: "5%",
+        // marginRight: "5%",
     },
     bttn3: {
         backgroundColor: "black",
