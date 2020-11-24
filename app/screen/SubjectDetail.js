@@ -10,48 +10,25 @@ import {
     FlatList,
     TouchableOpacity,
 } from "react-native";
-// import CustomHeaderButton from "../components/CustomHeaderButton";
-// import { HeaderButtons, Item } from "react-navigation-header-buttons";
+
 import color from '../constants/colors';
 const { width, height } = Dimensions.get('window');
 import { AntDesign } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useSelector, useDispatch } from 'react-redux';
-// import SubList from "../components/SubList";
+
 import { ListItem } from 'react-native-elements'
 import { addHistory } from '../store/action/userAction';
 
-// const SubList = ({ listData, navigation }) => {
-//     const renderMealItem = (itemData) => {
-//       return (
-//         //เขียนโค้ดเพิ่ม
-//         <MealItem
-//           title={itemData.item.title}
-//           duration={itemData.item.duration}
-//           complexity={itemData.item.complexity}
-//           affordability={itemData.item.affordability}
-//           image={itemData.item.imageUrl}
-//           onSelectMeal={() => {
-//             // เขียนโค้ดเพิ่ม
-//             navigation.navigate("S3", {
-//               id: itemData.item.id,
-//               mealTitle: itemData.item.title,
-//             });
-//           }}
-//         />
-//       );
-//     };
+
 
 
 export default function SubjectDetail(props) {
     const dispatch = useDispatch();
     const data = useSelector( (state) => state.user.data);
     const user = useSelector( (state) => state.user.currentUser);
-    // const displayedSub = data.filter(
-    //     (meal) => meal.categoryIds.indexOf(catId) >= 0
-    //   );
-    // console.log(data.map());
+
 
     let addStd;
     if (user.role === 'teacher'){

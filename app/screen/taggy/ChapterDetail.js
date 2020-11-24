@@ -23,6 +23,8 @@ const ChapterDetail = (props) => {
     const name = props.navigation.getParam("name");
     const detail = props.navigation.getParam("detail");
     const exercises = props.navigation.getParam("exercises");
+    const chapter = props.navigation.getParam("chapters");
+    const subject = props.navigation.getParam("subject");
     // console.log(name);
     // console.log(detail);
     // console.log(exercises);
@@ -30,7 +32,7 @@ const ChapterDetail = (props) => {
     let execlusive;
     if (user.role === 'teacher'){
         execlusive = (
-            <TouchableOpacity onPress={() => { props.navigation.navigate('createQuiz') }} style={styles.bttn3}>
+            <TouchableOpacity onPress={() => { props.navigation.navigate('createQuiz', {chapter: chapter, subject, subject}) }} style={styles.bttn3}>
                 <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>+</Text>
             </TouchableOpacity>
         )

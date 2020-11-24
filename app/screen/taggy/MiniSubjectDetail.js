@@ -52,7 +52,7 @@ const MiniSubjectDetail = (props) => {
                 <View style={styles.nani}>
                     {
                         chapters.map((element, index) => (
-                            <ListItem key={index} bottomDivider containerStyle={styles.bttn2} onPress={() => { props.navigation.navigate('chapDetail', { name: element.name, detail: element.detail, exercises: element.exercises }) }}>
+                            <ListItem key={index} bottomDivider containerStyle={styles.bttn2} onPress={() => { props.navigation.navigate('chapDetail', { name: element.name, detail: element.detail, exercises: element.exercises, subject: subject, chapters, chapters }) }}>
                                 {/* <ListItem.Content> */}
                                 <TouchableOpacity >
                                     <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element.name}</Text>

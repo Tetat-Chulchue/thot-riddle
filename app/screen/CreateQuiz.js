@@ -3,16 +3,26 @@ import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image } 
 import { Button, Input, Text, CheckBox } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { AntDesign } from "@expo/vector-icons";
+import { useSelector, useDispatch } from 'react-redux';
 
 import color from '../constants/colors';
+import { createQuiz } from '../store/action/userAction';
+import Exercise from '../model/Exercise';
+
 
 const { width, height } = Dimensions.get('window');
 
 export default function CreateQuiz(props) {
-    const chapter = null;
+
+    const dispatch = useDispatch();
 
     const [isQuiz, setIsQuiz] = useState(false);
     const [isExercise, setIsExercise] = useState(false);
+    const [name, setName] = useState('');
+    const [type, setType] = useState('');
+
+    const chapter = props.navigation.getParam("chapter");
+    const subject = props.navigation.getParam("subject");
 
     return (
         <View style={styles.container}>
@@ -24,6 +34,7 @@ export default function CreateQuiz(props) {
                     <Input
                         placeholder="Exercise Name"
                         containerStyle={{ width: 0.7 * width }}
+                        onChangeText={(text) => {setName(text)}}
                     />
                     <View style={{ flexDirection: 'row' }}>
                         <CheckBox
@@ -32,6 +43,7 @@ export default function CreateQuiz(props) {
                             onPress={() => {
                                 setIsExercise(false);
                                 setIsQuiz(true)
+                                setType('quiz')
                             }}
                             containerStyle={{ flex: 1, backgroundColor: color.color_5, borderRadius: 10, borderColor: color.color_5}}
                         />
@@ -41,6 +53,7 @@ export default function CreateQuiz(props) {
                             onPress={() => {
                                 setIsExercise(true);
                                 setIsQuiz(false)
+                                setType('exercise')
                             }}
                             containerStyle={{ flex: 1, backgroundColor: color.color_5, borderRadius: 10, borderColor: color.color_5}}
                         />
@@ -57,7 +70,11 @@ export default function CreateQuiz(props) {
                         type='solid'
                         raised={true}
                         title="Next   "
-                        onPress={() => { props.navigation.navigate('CreateQuestion') }}
+                        onPress={() => {
+                            let quiz = new Exercise(name, type, []);
+                            dispatch(createQuiz(subject, chapter[0], quiz))
+                            props.navigation.navigate('CreateQuestion', {subject: subject, chapter: chapter[0], quiz: quiz}) 
+                        }}
                         containerStyle={{ marginTop: 20 }}
                         buttonStyle={{ backgroundColor: color.color_1, borderRadius: 10 }}
                     />

@@ -3,20 +3,37 @@ import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image } 
 import { Button, Input, Text, CheckBox } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { AntDesign } from "@expo/vector-icons";
+import { useSelector, useDispatch } from 'react-redux';
 
 import color from '../constants/colors';
+import Question from '../model/Question';
+import { createQuestion } from '../store/action/userAction';
 
 const { width, height } = Dimensions.get('window');
 
-export default function CreateQuiz() {
+export default function CreateQuiz(props) {
 
+    const dispatch = useDispatch();
+
+    const subject = props.navigation.getParam("subject");
+    const chapter = props.navigation.getParam("chapter");
+    const quiz = props.navigation.getParam("quiz");
+
+    const [question, setQuestion] = useState('');
     const [isChoise, setIsChoise] = useState(false);
     const [isFill, setIsFill] = useState(false);
+    const [type, setType] = useState('');
+
 
     const [is1, setIs1] = useState(false);
     const [is2, setIs2] = useState(false);
     const [is3, setIs3] = useState(false);
     const [is4, setIs4] = useState(false);
+    const [choise2, setChoise2] = useState('');
+    const [choise3, setChoise3] = useState('');
+    const [choise1, setChoise1] = useState('');
+    const [choise4, setChoise4] = useState('');
+    const [correctIndex, setCorrectIndex] = useState(0);
 
 
     return (
@@ -33,6 +50,7 @@ export default function CreateQuiz() {
                         editable
                         maxLength={9999}
                         placeholder="    Type description here..."
+                        onChangeText={(text) => {setQuestion(text)}}
                     />
                     <View style={{ flexDirection: 'row', marginTop: 15 }}>
                         <CheckBox
@@ -41,6 +59,7 @@ export default function CreateQuiz() {
                             onPress={() => {
                                 setIsChoise(true);
                                 setIsFill(false)
+                                setType('choise')
                             }}
                             containerStyle={{ flex: 1, backgroundColor: color.color_5, borderRadius: 10, borderColor: color.color_5 }}
                         />
@@ -50,6 +69,7 @@ export default function CreateQuiz() {
                             onPress={() => {
                                 setIsChoise(false);
                                 setIsFill(true)
+                                setType('fill')
                             }}
                             containerStyle={{ flex: 1, backgroundColor: color.color_5, borderRadius: 10, borderColor: color.color_5 }}
                         />
@@ -60,6 +80,7 @@ export default function CreateQuiz() {
                                 placeholder='Choise #1'
                                 disabled={isFill}
                                 containerStyle={{ flex: 19 }}
+                                onChangeText={(text) => {setChoise1(text)}}
                             />
                             <CheckBox
                                 checked={is1}
@@ -68,6 +89,7 @@ export default function CreateQuiz() {
                                     setIs2(false);
                                     setIs3(false);
                                     setIs4(false)
+                                    setCorrectIndex(0)
                                 }}
                                 containerStyle={{ flex: 1 }}
                             />
@@ -77,6 +99,7 @@ export default function CreateQuiz() {
                                 placeholder='Choise #2'
                                 disabled={isFill}
                                 containerStyle={{ flex: 19 }}
+                                onChangeText={(text) => {setChoise2(text)}}
                             />
                             <CheckBox
                                 checked={is2}
@@ -85,6 +108,7 @@ export default function CreateQuiz() {
                                     setIs2(true);
                                     setIs3(false);
                                     setIs4(false)
+                                    setCorrectIndex(1)
                                 }}
                                 containerStyle={{ flex: 1 }}
                             />
@@ -94,6 +118,7 @@ export default function CreateQuiz() {
                                 placeholder='Choise #3'
                                 disabled={isFill}
                                 containerStyle={{ flex: 19 }}
+                                onChangeText={(text) => {setChoise3(text)}}
                             />
                             <CheckBox
                                 checked={is3}
@@ -102,6 +127,7 @@ export default function CreateQuiz() {
                                     setIs2(false);
                                     setIs3(true);
                                     setIs4(false)
+                                    setCorrectIndex(2)
                                 }}
                                 containerStyle={{ flex: 1 }}
                             />
@@ -111,6 +137,7 @@ export default function CreateQuiz() {
                                 placeholder='Choise #4'
                                 disabled={isFill}
                                 containerStyle={{ flex: 19 }}
+                                onChangeText={(text) => {setChoise4(text)}}
                             />
                             <CheckBox
                                 checked={is4}
@@ -119,6 +146,7 @@ export default function CreateQuiz() {
                                     setIs2(false);
                                     setIs3(false);
                                     setIs4(true)
+                                    setCorrectIndex(3)
                                 }}
                                 containerStyle={{ flex: 1 }}
                             />
@@ -136,7 +164,9 @@ export default function CreateQuiz() {
                         type='solid'
                         raised={true}
                         title="Add   "
-                        onPress={() => { }}
+                        onPress={() => {
+                            dispatch(createQuestion(subject, chapter, quiz, new Question(question, type, [choise1, choise2, choise3, choise4], correctIndex)))
+                        }}
                         containerStyle={{ marginTop: 20 }}
                         buttonStyle={{ backgroundColor: color.color_1, borderRadius: 10 }}
                     />
@@ -152,7 +182,7 @@ export default function CreateQuiz() {
                         type='solid'
                         raised={true}
                         title="Done   "
-                        onPress={() => { }}
+                        onPress={() => { props.navigation.popToTop() }}
                         containerStyle={{ marginTop: 20 }}
                         buttonStyle={{ backgroundColor: color.color_1, borderRadius: 10 }}
                     />

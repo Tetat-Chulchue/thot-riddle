@@ -1,4 +1,4 @@
-import { LOGIN, ADD_HISTORY, ADD_SUBJECT, ADD_CHAPTER } from "../action/userAction";
+import { LOGIN, ADD_HISTORY, ADD_SUBJECT, ADD_CHAPTER, CREATE_QUIZ, CREATE_QUESTION } from "../action/userAction";
 import { USER, DATA } from "../../data/data";
 
 const initialState = {
@@ -30,6 +30,23 @@ const mainReducer = (state = initialState, action) => {
             let subject = chapterData[chapterData.indexOf(action.subject)];
             subject.addChapter(action.chapter);
             return {...state, data: chapterData}
+        case CREATE_QUIZ:
+            let quizData = state.data;
+            let subjectOfQuiz = (quizData[quizData.indexOf(action.subject)])
+            let chapterOfQuiz = subjectOfQuiz.chapters[subjectOfQuiz.chapters.indexOf(action.chapter)]
+            console.log(chapterOfQuiz)
+            chapterOfQuiz.addExercise(action.quiz)
+            return {...state, data: quizData}
+        case CREATE_QUESTION:
+            let questionData = state.data;
+            let subjectOfQuestion = (questionData[questionData.indexOf(action.subject)])
+            let chapterOfQuestion = subjectOfQuestion.chapters[subjectOfQuestion.chapters.indexOf(action.chapter)]
+            let quizOfQuestion = chapterOfQuestion.exercises[chapterOfQuestion.exercises.indexOf(action.quiz)]
+            console.log(subjectOfQuestion)
+            console.log(chapterOfQuestion)
+            console.log(quizOfQuestion)
+            quizOfQuestion.addQuestion(action.question);
+            return {...state, data: questionData}
         default:
             return state;
     }
