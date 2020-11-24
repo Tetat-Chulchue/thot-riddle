@@ -24,7 +24,8 @@ import { ListItem } from 'react-native-elements';
 
 export default function SubjectDetail(props) {
     const data = useSelector( (state) => state.user.data);
-    const list = ["Math", "CS Unplugged", "CS Unplugged", "Math", "English 1", "Math"];
+    const user = useSelector( (state) => state.user.currentUser);
+    const list = user.history;
     return (
         <View style={styles.container}>
             <View style={styles.subContainer}>
@@ -54,7 +55,7 @@ export default function SubjectDetail(props) {
                             <ListItem key={index} bottomDivider  containerStyle={styles.bttn2} >
                                 {/* <ListItem.Content> */}
                                     <TouchableOpacity onPress={() => { props.navigation.navigate('chapDetail', { name: element.name, detail: element.detail, exercises: element.exercises }) }} >
-                                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{list[index]}</Text>
+                                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{list[index].name}</Text>
                                     </TouchableOpacity>
                                 {/* </ListItem.Content> */}
                             </ListItem>

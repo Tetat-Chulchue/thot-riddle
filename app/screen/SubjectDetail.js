@@ -17,9 +17,10 @@ const { width, height } = Dimensions.get('window');
 import { AntDesign } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 // import SubList from "../components/SubList";
 import { ListItem } from 'react-native-elements'
+import { addHistory } from '../store/action/userAction';
 
 // const SubList = ({ listData, navigation }) => {
 //     const renderMealItem = (itemData) => {
@@ -44,6 +45,7 @@ import { ListItem } from 'react-native-elements'
 
 
 export default function SubjectDetail(props) {
+    const dispatch = useDispatch();
     const data = useSelector( (state) => state.user.data);
     const user = useSelector( (state) => state.user.currentUser);
     // const displayedSub = data.filter(
@@ -83,7 +85,10 @@ export default function SubjectDetail(props) {
                 <View style={styles.nani}>
                     {
                         user.subjects.map((element, index) => (
-                            <ListItem key={index} bottomDivider  containerStyle={styles.bttn2} onPress={() => { props.navigation.navigate('miniSubjDetail', { name: element.name, detail: element.detail, chapters: element.chapters }) }}>
+                            <ListItem key={index} bottomDivider  containerStyle={styles.bttn2} onPress={() => {
+                                 props.navigation.navigate('miniSubjDetail', { name: element.name, detail: element.detail, chapters: element.chapters })
+                                 dispatch(addHistory(element));
+                                 }}>
                                 {/* <ListItem.Content> */}
                                     <TouchableOpacity>
                                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element.name}</Text>

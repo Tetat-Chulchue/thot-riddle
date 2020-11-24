@@ -11,7 +11,7 @@ const { width, height } = Dimensions.get('window');
 export default function Profile(props) {
 
     const user = useSelector( (state) => state.user.currentUser);
-    console.log(user);
+    console.log(user.history);
 
     return (
         <View style={styles.container}>
