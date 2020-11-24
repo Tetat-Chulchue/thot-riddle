@@ -5,10 +5,10 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
 import MyNavigator from './navigation/mainNavigator';
-import userReducer from './store/reducer/userReducer';
+import mainReducer from './store/reducer/mainReducer';
 
 const rootReducer = combineReducers({
-    user: userReducer
+    user: mainReducer
 })
 
 const store = createStore(rootReducer);

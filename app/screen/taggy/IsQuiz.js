@@ -42,14 +42,14 @@ const IsQuiz = (props) => {
                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Check</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.bttn3} >
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Next ></Text>
+                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Next</Text>
                     </TouchableOpacity>
                 </View>)  
     } else {
         return (
             <View style={styles.blacky}>
                 <TouchableOpacity style={styles.bttn3} >
-                    <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Next ></Text>
+                    <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Next</Text>
                 </TouchableOpacity>
             </View>
         )

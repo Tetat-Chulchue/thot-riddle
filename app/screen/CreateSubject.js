@@ -7,6 +7,6 @@ import color from '../constants/colors';
 
 const { width, height } = Dimensions.get('window');
 
-export default function CreateSubjectr() {
+export default function CreateSubject() {
     return null;
 }

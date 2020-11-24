@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         flex: 2,
     },
     bttn2: {
-        backgroundColor: "whitegrey",
+        backgroundColor: "lightgrey", // กูแก้ตรงนี้เพราะมึงพิมพ์ว่า whitegrey แล้ว react แม่งประสาทแดกไรไม่รู้กูหานานมากอีสัส - Shib@
         borderColor: "white",
         borderWidth: 2,
         padding: 5,

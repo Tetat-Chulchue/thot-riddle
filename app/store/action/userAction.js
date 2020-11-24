@@ -1,6 +1,6 @@
-export const UPDATE_USER = "UPDATE_USER";
+export const REGISTER = "REGISTER";
 
-export const updateUser = (user) => {
-    return {type: UPDATE_USER, user: user};
+export const register = (user) => {
+    return {type: REGISTER, user: user};
 };
 

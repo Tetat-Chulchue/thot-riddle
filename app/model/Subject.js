@@ -1,9 +1,9 @@
 class Subject {
-    constructor(name, detail) {
+    constructor(name, detail, chapters) {
         this.name = name;
         this.detail = detail;
+        this.chapters = chapters;
         this.students = [];
-        this.chapters = [];
     }
 
     addStudent(student) {

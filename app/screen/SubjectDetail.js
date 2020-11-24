@@ -28,7 +28,7 @@ export default function SubjectDetail(props) {
                         <AntDesign name="left" size={24} color="black" style={{ flex: 1 }}/>
                     </TouchableOpacity>
                     {/* <AntDesign name="left" size={24} color="black" style={{ flex: 1 }} onPress={() => { props.navigation.pop() }}/> */}
-                    <TouchableOpacity style={styles.bttn} >
+                    <TouchableOpacity style={styles.bttn} onPress={() => { props.navigation.navigate('createSubject') }}>
                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold' }}>Create Subject</Text>
                     </TouchableOpacity>
                     {/* <Button title="Create Subject" type="clear" style={styles.bttn}/> */}

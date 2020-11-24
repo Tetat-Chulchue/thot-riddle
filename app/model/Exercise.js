@@ -1,8 +1,8 @@
 class Exercise {
-    constructor(name, type) {
+    constructor(name, type, questions) {
         this.name = name;
         this.type = type;
-        this.questions = [];
+        this.questions = questions;
     }
 
     addQuestion(question) {

@@ -8,6 +8,9 @@ import color from '../constants/colors';
 const { width, height } = Dimensions.get('window');
 
 export default function Login(props) {
+
+    const loginHandler = () => {}
+
     return (
         <View style={styles.container}>
             <KeyboardAvoidingView style={styles.subContainer} behavior='position' keyboardVerticalOffset='-500'>

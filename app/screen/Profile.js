@@ -10,8 +10,8 @@ const { width, height } = Dimensions.get('window');
 
 export default function Profile(props) {
 
-    const user = useSelector( (state) => state.user.user);
-    console.log(user);
+    const user = useSelector( (state) => state.user.currentUser);
+
     return (
         <View style={styles.container}>
             <View style={styles.subContainer}>

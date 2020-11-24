@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 
 import color from '../constants/colors';
 import User from '../model/User';
-import { updateUser } from '../store/action/userAction';
+import { register } from '../store/action/userAction';
 
 const { width, height } = Dimensions.get('window');
 
@@ -18,10 +18,10 @@ export default function Login(props) {
     const [password, setPassword] = useState('');
     const [confirmPassword, setconfirmPassword] = useState('');
 
-    const register = (username, password, confirmPassword) => {
+    const registerHandler = (username, password, confirmPassword) => {
         if (confirmPassword === password) {
             let user = new User(username, password, 'student');
-            dispatch(updateUser(user));
+            dispatch(register(user));
             props.navigation.navigate('profile');
         }
     }
@@ -80,7 +80,7 @@ export default function Login(props) {
                         type='solid'
                         raised={true}
                         title='Register  '
-                        onPress={() => { register(username, password, confirmPassword) }}
+                        onPress={() => { registerHandler(username, password, confirmPassword) }}
                         containerStyle={{ marginTop: 20 }}
                     />
                 </View>
