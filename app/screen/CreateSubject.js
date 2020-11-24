@@ -9,7 +9,7 @@ import color from '../constants/colors';
 const { width, height } = Dimensions.get('window');
 
 export default function CreateSubject(props) {
-    const context = "Subject";
+    const context = props.navigation.getParam('context');
     return (
         <View style={styles.container}>
             <KeyboardAvoidingView style={styles.subContainer}>
@@ -22,11 +22,28 @@ export default function CreateSubject(props) {
                         containerStyle={{ width: 0.7 * width }}
                     />
                     <TextInput
-                        style={{borderColor: 'gray', borderWidth: 1, borderRadius: 5, width: 0.8 * width}}
+                        style={{ borderColor: 'gray', borderWidth: 1, borderRadius: 5, width: 0.8 * width }}
                         multiline
                         numberOfLines={10}
                         editable
                         maxLength={9999}
+                        placeholder="    Type description here..."
+                    />
+                    <Button
+                        icon={
+                            <Icon
+                                name="form"
+                                size={20}
+                                color="white"
+                            />
+                        }
+                        iconRight={true}
+                        type='solid'
+                        raised={true}
+                        title={'Create ' + context + '  '}
+                        onPress={() => { }}
+                        containerStyle={{ marginTop: 20 }}
+                        buttonStyle={{backgroundColor: color.color_1, borderRadius: 10}}
                     />
                 </View>
             </KeyboardAvoidingView>

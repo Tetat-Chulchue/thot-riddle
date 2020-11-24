@@ -13,6 +13,7 @@ import ExercisePage from '../screen/taggy/ExercisePage';
 import CreateSubject from '../screen/CreateSubject';
 import CreateChapter from '../screen/CreateChapter';
 import CreateQuiz from '../screen/CreateQuiz';
+import CreateQuestion from '../screen/CreateQuestion';
 
 const createNav = createStackNavigator({
     createSubject: {
@@ -23,6 +24,9 @@ const createNav = createStackNavigator({
     },
     createQuiz: {
         screen: CreateQuiz
+    },
+    CreateQuestion: {
+        screen: CreateQuestion
     },
 },
     {

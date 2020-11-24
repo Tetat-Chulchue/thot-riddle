@@ -1,5 +1,6 @@
 class User {
-    constructor(username, password, role, profileImage, subjects) {
+    constructor(id, username, password, role, profileImage, subjects) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.profileImage = profileImage;
@@ -11,7 +12,6 @@ class User {
     }
 
     updateHistoty() {}
-    enroll() {}
 }
 
 export default User;

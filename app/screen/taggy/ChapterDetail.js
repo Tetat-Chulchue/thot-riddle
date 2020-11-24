@@ -65,7 +65,7 @@ const ChapterDetail = (props) => {
                     <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('exercisePage', {id: '5'})}}>
                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Exercise 5</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn3} onPress={() => { props.navigation.navigate('exercisePage', {id: '6'})}}>
+                    <TouchableOpacity style={styles.bttn3} onPress={() => { props.navigation.navigate('createQuiz')}}>
                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>+</Text>
                     </TouchableOpacity> */}
                 </View>
