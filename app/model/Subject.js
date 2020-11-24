@@ -1,5 +1,6 @@
 class Subject {
-    constructor(name, detail, chapters) {
+    constructor(id, name, detail, chapters) {
+        this.id = id;
         this.name = name;
         this.detail = detail;
         this.chapters = chapters;
@@ -11,6 +12,11 @@ class Subject {
     }
     addChapter(chapter) {
         this.chapters.push(chapter);
+    }
+
+    enroll(student) {
+        this.students.push(student.id);
+        student.subjects.push(this.id);
     }
 }
 
