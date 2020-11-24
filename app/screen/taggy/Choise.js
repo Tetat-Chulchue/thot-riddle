@@ -24,11 +24,28 @@ import { IsRight } from './IsQuiz';
 
 const Choise = (props) => {
     const [bg, setBG] = useState('lightgrey');
-    // this.state={
-    //     bg = "lightgrey"
-    // }
-    const data = useSelector( (state) => state.user.DATA);
-    const choise = "choise";
+    const choise = props.type;
+    let a = '';
+    if (type == "exercise") {
+        a = 
+            <View style={styles.blacky}>
+                <TouchableOpacity style={styles.bttn3} >
+                    <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Check</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.bttn3} >
+                    <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Next</Text>
+                </TouchableOpacity>
+            </View>
+    } else {
+        return (
+            <View style={styles.blacky}>
+                <TouchableOpacity style={styles.bttn3} >
+                    <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Next</Text>
+                </TouchableOpacity>
+            </View>
+        )
+    }
+
     if (choise == "choise"){
         return (
             <View style={styles.nani}>
@@ -48,20 +65,7 @@ const Choise = (props) => {
                 }} onPress={() => {setBG(IsRight("right", "not"))}}>
                     <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 1</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={{
-                    backgroundColor: bg,
-                    borderColor: "white",
-                    borderWidth: 2,
-                    padding: 5,
-                    paddingLeft: 15,
-                    paddingRight: 15,
-                    paddingBottom: 15,
-                    paddingTop: 15,
-                    margin: 3,
-                    alignItems: "stretch",
-                    marginLeft: "5%",
-                    marginRight: "5%",
-                }} onPress={() => {setBG(IsRight("not", "not"))}}>
+                <TouchableOpacity style={styles.bttn2} onPress={() => {setBG(IsRight("not", "not"))}}>
                     <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 2</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.bttn2} onPress={() => {setBG(IsRight("not", "choose"))}}>
@@ -77,6 +81,8 @@ const Choise = (props) => {
                 <TextInput placeholder="Type your answer here..." textContentType="none" style={styles.form}/></View>
         )
     }
+
+
 
 };
         

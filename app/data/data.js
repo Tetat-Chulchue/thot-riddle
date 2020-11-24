@@ -29,8 +29,16 @@ export const DATA = [
                             new Question("Explain the quantum mechanics in simple terms", "fill", null, null),
                         ]
                     ),
-                    new Exercise("quiz 02","quiz", []),
-                    new Exercise("Exercise 01", "exercise", []),
+                    new Exercise("quiz 02", "quiz", [
+                        new Question("QUIZ2: What is 15 divided by 3", "choise", ["5", "1", "15", "0"], 0),
+                        new Question("QUIZ2: Which of these are prime number", "choise", ["1", "2", "4", "128"], 1),
+                        new Question("QUIZ2: Explain the quantum mechanics in simple terms", "fill", null, null),
+                    ]),
+                    new Exercise("Exercise 01", "exercise", [
+                        new Question("EXERCISE1: What is 15 divided by 3", "choise", ["5", "1", "15", "0"], 0),
+                        new Question("EXERCISE1: Which of these are prime number", "choise", ["1", "2", "4", "128"], 1),
+                        new Question("EXERCISE1: Explain the quantum mechanics in simple terms", "fill", null, null),
+                    ]),
                     new Exercise("Exercise 02", "exercise", []),
                 ]
             ),

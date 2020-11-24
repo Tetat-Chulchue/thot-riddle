@@ -36,7 +36,8 @@ export function IsRight(data, stat) {
 
 const IsQuiz = (props) => {
     // const choice = props.choice;
-    const type = "exercise";
+    // const type = "exercise";
+    const type = props.type;
     if (type == "exercise"){
             return (
                 <View style={styles.blacky}>
@@ -46,7 +47,7 @@ const IsQuiz = (props) => {
                     <TouchableOpacity style={styles.bttn3} >
                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Next</Text>
                     </TouchableOpacity>
-                </View>)  
+                </View>)
     } else {
         return (
             <View style={styles.blacky}>

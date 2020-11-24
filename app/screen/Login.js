@@ -26,6 +26,7 @@ export default function Login(props) {
         } else {
             // HANDLE FAIL
         }
+        // props.navigation.navigate('profile');
     }
 
     return (

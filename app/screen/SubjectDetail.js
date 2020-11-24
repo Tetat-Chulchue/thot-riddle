@@ -56,7 +56,7 @@ export default function SubjectDetail(props) {
                     <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.pop() }}>
                         <AntDesign name="left" size={24} color="black" style={{ flex: 1 }}/>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn} onPress={() => { props.navigation.navigate('createSubject') }}>
+                    <TouchableOpacity style={styles.bttn} onPress={() => { props.navigation.navigate('createSubject', {context: 'Subject'})}}>
                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold' }}>Create Subject</Text>
                     </TouchableOpacity>
                 </View>
@@ -74,7 +74,7 @@ export default function SubjectDetail(props) {
                         data.map((element, index) => (
                             <ListItem key={index} bottomDivider  containerStyle={styles.bttn2} >
                                 {/* <ListItem.Content> */}
-                                    <TouchableOpacity onPress={() => { props.navigation.navigate('miniSubjDetail', { name: element.name, detail: element.detail, chapter: [element.chapter] }) }} >
+                                    <TouchableOpacity onPress={() => { props.navigation.navigate('miniSubjDetail', { name: element.name, detail: element.detail, chapters: element.chapters }) }} >
                                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element.name}</Text>
                                     </TouchableOpacity>
                                 {/* </ListItem.Content> */}

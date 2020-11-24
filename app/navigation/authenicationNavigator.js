@@ -9,6 +9,7 @@ import Login from '../screen/Login';
 import Register from '../screen/Register';
 import Welcome from '../screen/Welcome';
 import Profile from '../screen/Profile';
+import HistoryPage from '../screen/taggy/History';
 
 const authenNavigator = createStackNavigator(
     {
@@ -23,6 +24,9 @@ const authenNavigator = createStackNavigator(
         },
         profile: {
             screen: Profile
+        },
+        history: {
+            screen: HistoryPage
         }
     },
     {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from 'react';
 import {
     View,
     Text,
@@ -16,58 +16,50 @@ import color from '../../constants/colors';
 const { width, height } = Dimensions.get('window');
 import { AntDesign } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/AntDesign';
+import { useSelector } from 'react-redux';
+// import SubList from "../components/SubList";
 import { ListItem } from 'react-native-elements';
 
-const ChapterDetail = (props) => {
-    const name = props.navigation.getParam("name");
-    const detail = props.navigation.getParam("detail");
-    const exercises = props.navigation.getParam("exercises");
-    console.log(name);
-    console.log(detail);
-    console.log(exercises);
+
+export default function SubjectDetail(props) {
+    const data = useSelector( (state) => state.user.data);
+    const list = ["Math", "CS Unplugged", "CS Unplugged", "Math", "English 1", "Math"];
     return (
         <View style={styles.container}>
             <View style={styles.subContainer}>
                 <View style={styles.subHeader}>
                     <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.pop() }}>
-                        <AntDesign name="left" size={24} color="black" style={{ flex: 1 }} />
+                        <AntDesign name="left" size={24} color="black" style={{ flex: 1 }}/>
                     </TouchableOpacity>
-                    <Text style={{ color: color.color_1, fontSize: 23, fontWeight: 'bold', flex: 6 }}>{name}</Text>
+                    <TextInput
+                        placeholder="Search"
+                        textContentType="none"
+                        style={styles.form}
+                    />
+                    <AntDesign name="search1" size={24} color="black" style={{ flex: 1 }} />
                 </View>
-                <View style={styles.search}>
-                    <Text style={{ color: color.color_1, fontSize: 23, fontWeight: 'bold', flex: 1, alignSelf: "flex-start" }}>Detail</Text>
-                    <Text style={{ color: color.color_1, fontSize: 18, flex: 6, alignSelf: "flex-start" }}>{detail}</Text>
-                </View>
+                {/* <View style={styles.search}>
+                    <TextInput
+                        placeholder="Search"
+                        textContentType="none"
+                        style={styles.form}
+                    />
+                    <AntDesign name="search1" size={24} color="black" style={{ flex: 1 }} />
+                </View> */}
+                
                 <View style={styles.nani}>
                     {
-                        exercises.map((element, index) => (
-                            <ListItem key={index} bottomDivider containerStyle={styles.bttn2} onPress={() => { props.navigation.navigate('history', { name: element.name, type: element.type, questions: element.questions }) }}>
+                        list.map((element, index) => (
+                            <ListItem key={index} bottomDivider  containerStyle={styles.bttn2} >
                                 {/* <ListItem.Content> */}
-                                <TouchableOpacity >
-                                    <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element.name}</Text>
-                                </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => { props.navigation.navigate('chapDetail', { name: element.name, detail: element.detail, exercises: element.exercises }) }} >
+                                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{list[index]}</Text>
+                                    </TouchableOpacity>
                                 {/* </ListItem.Content> */}
                             </ListItem>
                         ))
                     }
-                    {/* <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('exercisePage', {id: '1'})}}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Exercise 1</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('exercisePage', {id: '2'})}}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Exercise 2</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('exercisePage', {id: '3'})}}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Exercise 3</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('exercisePage', {id: '4'})}}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Exercise 4</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('exercisePage', {id: '5'})}}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Exercise 5</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.bttn3} onPress={() => { props.navigation.navigate('exercisePage', {id: '6'})}}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>+</Text>
-                    </TouchableOpacity> */}
                 </View>
 
             </View>
@@ -94,7 +86,7 @@ const styles = StyleSheet.create({
         marginRight: "5%",
     },
     nani: {
-        flex: 2,
+        flex: 11,
     },
     bttn2: {
         backgroundColor: "lightgrey",
@@ -103,12 +95,15 @@ const styles = StyleSheet.create({
         padding: 5,
         paddingLeft: 15,
         paddingRight: 15,
-        paddingBottom: 15,
-        paddingTop: 15,
+        width: "100%",
         margin: 3,
-        alignItems: "stretch",
-        marginLeft: "5%",
-        marginRight: "5%",
+        alignItems: "center",
+        borderRadius: 5,
+        marginBottom: 10,
+        // paddingTop
+        // textAlign: "center",
+        // marginLeft: "5%",
+        // marginRight: "5%",
     },
     bttn3: {
         backgroundColor: "black",
@@ -117,15 +112,13 @@ const styles = StyleSheet.create({
         padding: 5,
         paddingLeft: 15,
         paddingRight: 15,
-        paddingBottom: 15,
-        paddingTop: 15,
         margin: 3,
         alignItems: "stretch",
         marginLeft: "5%",
         marginRight: "5%",
     },
     search: {
-        flexDirection: "column",
+        flexDirection: "row",
         alignItems: "center",
         // width: "100%",
         // marginBottom: "7%",
@@ -187,4 +180,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ChapterDetail;
+// export default SubjectDetail;

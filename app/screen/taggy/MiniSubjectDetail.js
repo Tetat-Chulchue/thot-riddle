@@ -14,9 +14,15 @@ import color from '../../constants/colors';
 const { width, height } = Dimensions.get('window');
 import { AntDesign } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
+import { ListItem } from 'react-native-elements';
 
 const MiniSubjectDetail = (props) => {
-    const Id = props.navigation.getParam("id");
+    const name = props.navigation.getParam("name");
+    const detail = props.navigation.getParam("detail");
+    const chapters = props.navigation.getParam("chapters");
+    console.log(name);
+    console.log(detail);
+    console.log(chapters);
     return (
         <View style={styles.container}>
             <View style={styles.subContainer}>
@@ -24,16 +30,26 @@ const MiniSubjectDetail = (props) => {
                     <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.pop() }}>
                         <AntDesign name="left" size={24} color="black" style={{ flex: 1 }} />
                     </TouchableOpacity>
-                    <Text style={{ color: 'white', fontSize: 23, fontWeight: 'bold', flex: 6}}>This is Subject {Id}</Text>
+                    <Text style={{ color: color.color_1, fontSize: 23, fontWeight: 'bold', flex: 6}}>{name}</Text>
                 </View>
                 <View style={styles.search}>
-                    <Text style={{ color: 'white', fontSize: 23, fontWeight: 'bold', flex: 1, alignSelf: "flex-start"}}>Detail</Text>
-                    <Text style={{ color: 'white', fontSize: 18, flex: 6, alignSelf: "flex-start"}}>This is all about Subject {Id}.....wanna hear me explain it?
-                    {"\n"}hah fine. but I will only tell u only one time ok? because I am too tired from coding this stupid page</Text>
+                    <Text style={{ color: color.color_1, fontSize: 23, fontWeight: 'bold', flex: 1, alignSelf: "flex-start"}}>Detail</Text>
+                    <Text style={{ color: color.color_1, fontSize: 18, flex: 6, alignSelf: "flex-start"}}>{detail}</Text>
                 </View>
                 <View style={styles.nani}>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('chapDetail', {id: '1'})}}>
-                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Chapter 1</Text>
+                    {
+                        chapters.map((element, index) => (
+                            <ListItem key={index} bottomDivider containerStyle={styles.bttn2} onPress={() => { props.navigation.navigate('chapDetail', { name: element.name, detail: element.detail, exercises: element.exercises }) }}>
+                                {/* <ListItem.Content> */}
+                                <TouchableOpacity >
+                                    <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element.name}</Text>
+                                </TouchableOpacity>
+                                {/* </ListItem.Content> */}
+                            </ListItem>
+                        ))
+                    }
+                    {/* <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('chapDetail', {id: '1'})}}>
+                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>chapters 1</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('chapDetail', {id: '2'})}}>
                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Chapter 2</Text>
@@ -49,7 +65,7 @@ const MiniSubjectDetail = (props) => {
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.bttn3} onPress={() => { props.navigation.navigate('chapDetail', {id: '6'})}}>
                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>+</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
             </View>
         </View>

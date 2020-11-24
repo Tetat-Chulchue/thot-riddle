@@ -1,4 +1,4 @@
-import React from "react";
+import React , { useState } from "react";
 import {
     View,
     Text,
@@ -20,7 +20,14 @@ import Choise from './Choise';
 import IsQuiz from './IsQuiz';
 
 const ExercisePage = (props) => {
-    const Id = props.navigation.getParam("id");
+    const name = props.navigation.getParam("name");
+    const type = props.navigation.getParam("type");
+    const questions = props.navigation.getParam("questions");
+    console.log(name);
+    console.log(type);
+    console.log(questions);
+    const [quesIndex, setQuesIndex] = useState(0);
+    // const [quesType, setQuesType] = useState('');
     return (
         <View style={styles.container}>
             <View style={styles.subContainer}>
@@ -28,18 +35,16 @@ const ExercisePage = (props) => {
                     <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.pop() }}>
                         <AntDesign name="left" size={24} color="black" style={{ flex: 1 }} />
                     </TouchableOpacity>
-                    <Text style={{ color: 'white', fontSize: 23, fontWeight: 'bold', flex: 6 }}>Exersice {Id}</Text>
+                    <Text style={{ color: color.color_1, fontSize: 23, fontWeight: 'bold', flex: 6 }}>{name}</Text>
                 </View>
                 <View style={styles.search}>
-                    <Text style={{ color: 'white', fontSize: 23, fontWeight: 'bold', flex: 1, alignSelf: "flex-start" }}>Detail</Text>
-                    <Text style={{ color: 'white', fontSize: 18, flex: 6, alignSelf: "flex-start" }}>This is all about Chapter {Id}.....?....{"\n"}
-                        What?....U though this page look familiar? no no no nope.....just ur imagination trust me...</Text>
+                    <Text style={{ color: color.color_1, fontSize: 23, fontWeight: 'bold', flex: 1, alignSelf: "flex-start" }}>Question</Text>
+                    <Text style={{ color: color.color_1, fontSize: 18, flex: 6, alignSelf: "flex-start" }}>{questions[quesIndex].question}</Text>
                 </View>
-                <Choise style={styles.nani} />
-                <IsQuiz style={styles.blacky} />
-                {/* <IsTest style={styles.blacky}/> */}
+                <Choise style={styles.nani } type={questions[quesIndex].type} isQuiz={type}/>
                 {/* <View style={styles.nani}>
-                    <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.pop() }}>
+                    <IsQuiz style={styles.blacky} type={type}/>
+                    {/* <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.pop() }}>
                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 1</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.bttn2} >
