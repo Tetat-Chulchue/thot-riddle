@@ -1,8 +1,9 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image } from 'react-native';
+import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image, Alert } from 'react-native';
 import { useDispatch } from 'react-redux'
-import { Button, Input, Text } from 'react-native-elements';
+import { Button, Input, Text, CheckBox } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
+import { useSelector } from 'react-redux'; 
 
 import color from '../constants/colors';
 import User from '../model/User';
@@ -12,29 +13,43 @@ const { width, height } = Dimensions.get('window');
 
 export default function Login(props) {
 
+    const allUsers = useSelector( (state) => state.user.users);
+
     const dispatch = useDispatch()
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setconfirmPassword] = useState('');
+    const [isTeacher, setIsTeacher] = useState(false);
+    const [isStudent, setIsStudent] = useState(false);
+    const [role, setRole] = useState();
 
     const registerHandler = (username, password, confirmPassword) => {
-        if (confirmPassword === password) {
-            let user = new User(username, password, 'student');
+        if ((confirmPassword === password) && (password !== "")) {
+            let user = new User(allUsers.length + 1,  username, password, role);
             dispatch(login(user));
             props.navigation.navigate('profile');
+        } else {
+            Alert.alert(
+                "Error",
+                "Password amd confirm password mismatch",
+                [
+                    { text: "OK", onPress: () => console.log("OK Pressed") }
+                ],
+                { cancelable: false }
+            );
         }
     }
 
     return (
         <View style={styles.container}>
             <KeyboardAvoidingView style={styles.subContainer} behavior='position' keyboardVerticalOffset='-500'>
-                <Text h1 > Register </Text>
+                <Text h1 style={{alignSelf: 'center'}}> Register </Text>
                 <Image
                     source={require('../assets/img/logo_thoth.png')}
-                    style={{ width: width * 0.4, height: width * 0.4, marginTop: 50 }}
+                    style={{ width: width * 0.4, height: width * 0.4, alignSelf: 'center', marginTop: 10 }}
                 />
-                <View style={{ flexDirection: 'column', paddingTop: 50, flex: 1 }}>
+                <View style={{ flexDirection: 'column', paddingTop: 50, flex: 1, width: width * 0.8}}>
                     <Input
                         placeholder='Username'
                         leftIcon={
@@ -68,6 +83,28 @@ export default function Login(props) {
                         }
                         onChangeText={(text) => { setconfirmPassword(text) }}
                     />
+                    <View style={{ flexDirection: 'row' }}>
+                        <CheckBox
+                            title='Teacher'
+                            checked={isTeacher}
+                            onPress={() => {
+                                setIsTeacher(true);
+                                setIsStudent(false);
+                                setRole('teacher')
+                            }}
+                            containerStyle={{ flex: 1, backgroundColor: color.color_5, borderRadius: 10, borderColor: color.color_5 }}
+                        />
+                        <CheckBox
+                            title='Student'
+                            checked={isStudent}
+                            onPress={() => {
+                                setIsTeacher(false);
+                                setIsStudent(true);
+                                setRole('student')
+                            }}
+                            containerStyle={{ flex: 1, backgroundColor: color.color_5, borderRadius: 10, borderColor: color.color_5 }}
+                        />
+                    </View>
                     <Button
                         icon={
                             <Icon
@@ -82,6 +119,7 @@ export default function Login(props) {
                         title='Register  '
                         onPress={() => { registerHandler(username, password, confirmPassword) }}
                         containerStyle={{ marginTop: 20 }}
+                        buttonStyle={{backgroundColor: color.color_2, borderRadius: 10}}
                     />
                 </View>
 

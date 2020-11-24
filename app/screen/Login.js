@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image } from 'react-native';
+import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image, Alert } from 'react-native';
 import { Button, Input, Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useSelector, useDispatch } from 'react-redux';
@@ -13,7 +13,7 @@ export default function Login(props) {
 
     const dispatch = useDispatch()
 
-    const allUser =  useSelector( (state) => state.user.users);
+    const allUser = useSelector((state) => state.user.users);
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -24,7 +24,14 @@ export default function Login(props) {
             dispatch(login(user[0]));
             props.navigation.navigate('profile');
         } else {
-            // HANDLE FAIL
+            Alert.alert(
+                "Error",
+                "Fail to login",
+                [
+                    { text: "OK", onPress: () => console.log("OK Pressed") }
+                ],
+                { cancelable: false }
+            );
         }
         // props.navigation.navigate('profile');
     }
@@ -47,7 +54,7 @@ export default function Login(props) {
                                 color='black'
                             />
                         }
-                        onChangeText={(text) => {setUsername(text)}}
+                        onChangeText={(text) => { setUsername(text) }}
                     />
                     <Input
                         placeholder='Password'
@@ -58,7 +65,7 @@ export default function Login(props) {
                                 color='black'
                             />
                         }
-                        onChangeText={(text) => {setPassword(text)}}
+                        onChangeText={(text) => { setPassword(text) }}
                     />
                     <Button
                         icon={
@@ -74,6 +81,7 @@ export default function Login(props) {
                         title='Login  '
                         onPress={() => { loginHandler(username, password) }}
                         containerStyle={{ marginTop: 20 }}
+                        buttonStyle={{backgroundColor: color.color_2, borderRadius: 10}}
                     />
                 </View>
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image } from 'react-native';
-import { Button, Input, Text, Avatar } from 'react-native-elements';
+import { Button, Input, Text, Avatar, CheckBox } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useSelector } from 'react-redux'; 
 
@@ -12,6 +12,7 @@ export default function Profile(props) {
 
     const user = useSelector( (state) => state.user.currentUser);
     console.log(user);
+
     return (
         <View style={styles.container}>
             <View style={styles.subContainer}>
@@ -20,7 +21,7 @@ export default function Profile(props) {
                     rounded
                     source={{
                         uri:
-                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3XiQW__qCu3J1HsR0QupIaerXSeiNTG2DBA&usqp=CAU',
+                            user.profileImage,
                     }}
                     containerStyle={{ width: width * 0.5, height: width * 0.5 }}
                 />
