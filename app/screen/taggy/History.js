@@ -54,7 +54,7 @@ export default function SubjectDetail(props) {
                         list.map((element, index) => (
                             <ListItem key={index} bottomDivider  containerStyle={styles.bttn2} >
                                 {/* <ListItem.Content> */}
-                                    <TouchableOpacity onPress={() => { props.navigation.navigate('chapDetail', { name: element.name, detail: element.detail, exercises: element.exercises }) }} >
+                                    <TouchableOpacity onPress={() => { props.navigation.navigate('miniSubjDetail', { name: list[index].name, detail: list[index].detail, chapters: list[index].chapters }) }} >
                                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{list[index].name}</Text>
                                     </TouchableOpacity>
                                 {/* </ListItem.Content> */}
