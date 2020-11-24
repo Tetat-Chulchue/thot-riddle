@@ -18,16 +18,20 @@ import { AntDesign } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 // import IsQuiz from './IsQuiz';
 import { IsRight } from './IsQuiz';
-
-// var bg = "lightgrey";
+import { ListItem } from 'react-native-elements';
+import { useSelector } from 'react-redux';
 
 
 const Choise = (props) => {
     const [bg, setBG] = useState('lightgrey');
     const choise = props.type;
     let a = '';
-    if (type == "exercise") {
-        a = 
+    const questions = props.questions;
+    console.log(questions);
+    let exPart;
+    const isQuiz = props.isQuiz;
+    if (isQuiz === 'exercise'){
+        exPart = (
             <View style={styles.blacky}>
                 <TouchableOpacity style={styles.bttn3} >
                     <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Check</Text>
@@ -36,20 +40,43 @@ const Choise = (props) => {
                     <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Next</Text>
                 </TouchableOpacity>
             </View>
-    } else {
-        return (
-            <View style={styles.blacky}>
-                <TouchableOpacity style={styles.bttn3} >
-                    <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Next</Text>
-                </TouchableOpacity>
-            </View>
         )
+    }else{
+        exPart = (
+                    <View style={styles.blacky}>
+                        <TouchableOpacity style={styles.bttn3} >
+                            <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Next</Text>
+                        </TouchableOpacity>
+                    </View>
+                )
     }
 
     if (choise == "choise"){
         return (
             <View style={styles.nani}>
-                <TouchableOpacity style={{
+                {
+                    questions.map((element, index) => (
+                        <ListItem key={index} bottomDivider containerStyle={{
+                            backgroundColor: bg,
+                            borderColor: "white",
+                            borderWidth: 2,
+                            padding: 5,
+                            paddingLeft: 15,
+                            paddingRight: 15,
+                            paddingBottom: 15,
+                            paddingTop: 15,
+                            margin: 3,
+                            alignItems: "stretch",
+                            marginLeft: "5%",
+                            marginRight: "5%",
+                        }} onPress={() => { setBG(IsRight("right", "not")) }}>
+                            <TouchableOpacity>
+                                <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element}</Text>
+                            </TouchableOpacity>
+                        </ListItem>
+                    ))
+                }
+                {/* <TouchableOpacity style={{
                     backgroundColor: bg,
                     borderColor: "white",
                     borderWidth: 2,
@@ -73,12 +100,15 @@ const Choise = (props) => {
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.bttn2} onPress={() => {setBG(IsRight("not", "not"))}}>
                     <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Answer 4</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
+                {exPart}
             </View>)
     } else {
         return (
             <View style={styles.nani}>
-                <TextInput placeholder="Type your answer here..." textContentType="none" style={styles.form}/></View>
+                <TextInput placeholder="Type your answer here..." textContentType="none" style={styles.form}/>
+                {exPart}
+            </View>
         )
     }
 

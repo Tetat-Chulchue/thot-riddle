@@ -17,6 +17,7 @@ const { width, height } = Dimensions.get('window');
 import { AntDesign } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import { ListItem } from 'react-native-elements';
+import { useSelector } from 'react-redux';
 
 const ChapterDetail = (props) => {
     const name = props.navigation.getParam("name");
@@ -25,6 +26,17 @@ const ChapterDetail = (props) => {
     console.log(name);
     console.log(detail);
     console.log(exercises);
+    const user = useSelector( (state) => state.user.currentUser);
+    let execlusive;
+    if (user.role === 'teacher'){
+        execlusive = (
+            <TouchableOpacity onPress={() => { props.navigation.navigate('createQuiz') }} style={styles.bttn3}>
+                <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>+</Text>
+            </TouchableOpacity>
+        )
+    }else{
+        execlusive = (<TouchableOpacity ></TouchableOpacity>)
+    }
     return (
         <View style={styles.container}>
             <View style={styles.subContainer}>
@@ -41,7 +53,7 @@ const ChapterDetail = (props) => {
                 <View style={styles.nani}>
                     {
                         exercises.map((element, index) => (
-                            <ListItem key={index} bottomDivider containerStyle={styles.bttn2} onPress={() => { props.navigation.navigate('history', { name: element.name, type: element.type, questions: element.questions }) }}>
+                            <ListItem key={index} bottomDivider containerStyle={styles.bttn2} onPress={() => { props.navigation.navigate('exercisePage', { name: element.name, type: element.type, questions: element.questions }) }}>
                                 {/* <ListItem.Content> */}
                                 <TouchableOpacity >
                                     <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element.name}</Text>
@@ -50,6 +62,7 @@ const ChapterDetail = (props) => {
                             </ListItem>
                         ))
                     }
+                    {execlusive}
                     {/* <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.navigate('exercisePage', {id: '1'})}}>
                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Exercise 1</Text>
                     </TouchableOpacity>

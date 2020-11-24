@@ -17,7 +17,7 @@ const { width, height } = Dimensions.get('window');
 import { AntDesign } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import Choise from './Choise';
-import IsQuiz from './IsQuiz';
+// import IsQuiz from './IsQuiz';
 
 const ExercisePage = (props) => {
     const name = props.navigation.getParam("name");
@@ -41,7 +41,7 @@ const ExercisePage = (props) => {
                     <Text style={{ color: color.color_1, fontSize: 23, fontWeight: 'bold', flex: 1, alignSelf: "flex-start" }}>Question</Text>
                     <Text style={{ color: color.color_1, fontSize: 18, flex: 6, alignSelf: "flex-start" }}>{questions[quesIndex].question}</Text>
                 </View>
-                <Choise style={styles.nani } type={questions[quesIndex].type} isQuiz={type}/>
+                <Choise style={styles.nani } type={questions[quesIndex].type} isQuiz={type} questions={questions[quesIndex].choises} right={questions[quesIndex].choises}/>
                 {/* <View style={styles.nani}>
                     <IsQuiz style={styles.blacky} type={type}/>
                     {/* <TouchableOpacity style={styles.bttn2} onPress={() => { props.navigation.pop() }}>
