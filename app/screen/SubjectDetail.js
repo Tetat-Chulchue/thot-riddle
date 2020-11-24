@@ -112,7 +112,7 @@ export default function SubjectDetail(props) {
                                     <TouchableOpacity>
                                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element.name}</Text>
                                     </TouchableOpacity>
-                                    {delSub}
+                                    {/* {delSub} */}
                                 {/* </ListItem.Content> */}
                             </ListItem>
                         ))
