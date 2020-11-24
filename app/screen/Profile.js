@@ -59,6 +59,7 @@ export default function Profile(props) {
                         title="   History"
                         buttonStyle={{ backgroundColor: color.color_5 }}
                         containerStyle={{ margin: 10 }}
+                        onPress={() => {props.navigation.navigate('history')}}
                     />
                 </View>
 

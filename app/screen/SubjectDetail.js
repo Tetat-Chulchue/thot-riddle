@@ -45,10 +45,21 @@ import { ListItem } from 'react-native-elements'
 
 export default function SubjectDetail(props) {
     const data = useSelector( (state) => state.user.data);
+    const user = useSelector( (state) => state.user.currentUser);
     // const displayedSub = data.filter(
     //     (meal) => meal.categoryIds.indexOf(catId) >= 0
     //   );
     // console.log(data.map());
+    let execlusive;
+    if (user == 'teacher'){
+        execlusive = (
+            <TouchableOpacity onPress={() => { props.navigation.navigate('miniSubjDetail', { name: element.name, detail: element.detail, chapters: element.chapters }) }} >
+                <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element.name}</Text>
+            </TouchableOpacity>
+        )
+    }else{
+        
+    }
     return (
         <View style={styles.container}>
             <View style={styles.subContainer}>
@@ -81,6 +92,7 @@ export default function SubjectDetail(props) {
                             </ListItem>
                         ))
                     }
+                {abc}
                 </View>
 
             </View>
