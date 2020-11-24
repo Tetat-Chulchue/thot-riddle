@@ -24,7 +24,13 @@ const createNav = createStackNavigator({
     createQuiz: {
         screen: CreateQuiz
     },
-});
+},
+    {
+        defaultNavigationOptions: {
+            headerShown: false,
+        }
+    }
+);
 
 const subjectNav = createStackNavigator({
     subjDetail: {

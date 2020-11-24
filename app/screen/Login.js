@@ -1,15 +1,32 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image } from 'react-native';
 import { Button, Input, Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
+import { useSelector, useDispatch } from 'react-redux';
 
 import color from '../constants/colors';
+import { login } from '../store/action/userAction';
 
 const { width, height } = Dimensions.get('window');
 
 export default function Login(props) {
 
-    const loginHandler = () => {}
+    const dispatch = useDispatch()
+
+    const allUser =  useSelector( (state) => state.user.users);
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const loginHandler = (username, password) => {
+        let user = (allUser.filter(u => u.username === username))
+        if (user.length === 1 && (user[0].password === password)) {
+            dispatch(login(user[0]));
+            props.navigation.navigate('profile');
+        } else {
+            // HANDLE FAIL
+        }
+    }
 
     return (
         <View style={styles.container}>
@@ -29,6 +46,7 @@ export default function Login(props) {
                                 color='black'
                             />
                         }
+                        onChangeText={(text) => {setUsername(text)}}
                     />
                     <Input
                         placeholder='Password'
@@ -39,6 +57,7 @@ export default function Login(props) {
                                 color='black'
                             />
                         }
+                        onChangeText={(text) => {setPassword(text)}}
                     />
                     <Button
                         icon={
@@ -52,7 +71,7 @@ export default function Login(props) {
                         type='solid'
                         raised={true}
                         title='Login  '
-                        onPress={() => { props.navigation.navigate('profile') }}
+                        onPress={() => { loginHandler(username, password) }}
                         containerStyle={{ marginTop: 20 }}
                     />
                 </View>

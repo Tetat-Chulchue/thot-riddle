@@ -1,4 +1,4 @@
-import { REGISTER } from "../action/userAction";
+import { LOGIN } from "../action/userAction";
 import { USER, DATA } from "../../data/data";
 
 const initialState = {
@@ -9,7 +9,7 @@ const initialState = {
 
 const mainReducer = (state = initialState, action) => {
     switch (action.type) {
-        case REGISTER:
+        case LOGIN:
             let loginUser = state.currentUser;
             loginUser = action.user;
             return { ...state, currentUser: loginUser };

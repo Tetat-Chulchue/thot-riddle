@@ -1,6 +1,6 @@
-export const REGISTER = "REGISTER";
+export const LOGIN = "LOGIN";
 
-export const register = (user) => {
-    return {type: REGISTER, user: user};
+export const login = (user) => {
+    return {type: LOGIN, user: user};
 };
 

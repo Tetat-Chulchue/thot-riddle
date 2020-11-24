@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 
 import color from '../constants/colors';
 import User from '../model/User';
-import { register } from '../store/action/userAction';
+import { login } from '../store/action/userAction';
 
 const { width, height } = Dimensions.get('window');
 
@@ -21,7 +21,7 @@ export default function Login(props) {
     const registerHandler = (username, password, confirmPassword) => {
         if (confirmPassword === password) {
             let user = new User(username, password, 'student');
-            dispatch(register(user));
+            dispatch(login(user));
             props.navigation.navigate('profile');
         }
     }
