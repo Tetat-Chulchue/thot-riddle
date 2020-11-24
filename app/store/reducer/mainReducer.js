@@ -1,4 +1,4 @@
-import { LOGIN, ADD_HISTORY } from "../action/userAction";
+import { LOGIN, ADD_HISTORY, ADD_SUBJECT, ADD_CHAPTER } from "../action/userAction";
 import { USER, DATA } from "../../data/data";
 
 const initialState = {
@@ -14,11 +14,22 @@ const mainReducer = (state = initialState, action) => {
             loginUser = action.user;
             return { ...state, currentUser: loginUser };
         case ADD_HISTORY:
-            let user = state.currentUser;
-            if (!(user.history.includes(action.subject))) {
-                user.history.push(action.subject);
+            let historyUser = state.currentUser;
+            if (!(historyUser.history.includes(action.subject))) {
+                historyUser.history.push(action.subject);
             }
-            return {...state, currentUser: user}
+            return {...state, currentUser: historyUser}
+        case ADD_SUBJECT:
+            let subjectData = state.data;
+            let subjectUser = state.currentUser;
+            subjectData.push(action.subject);
+            subjectUser.subjects.push(subjectData[subjectData.length - 1]);
+            return {...state, currentUser: subjectUser, data: subjectData}
+        case ADD_CHAPTER:
+            let chapterData = state.data;
+            let subject = chapterData[chapterData.indexOf(action.subject)];
+            subject.addChapter(action.chapter);
+            return {...state, data: chapterData}
         default:
             return state;
     }

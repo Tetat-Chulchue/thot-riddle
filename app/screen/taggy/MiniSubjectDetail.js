@@ -21,6 +21,7 @@ const MiniSubjectDetail = (props) => {
     const name = props.navigation.getParam("name");
     const detail = props.navigation.getParam("detail");
     const chapters = props.navigation.getParam("chapters");
+    const subject = props.navigation.getParam("subject");
     // console.log(name);
     // console.log(detail);
     // console.log(chapters);
@@ -28,7 +29,7 @@ const MiniSubjectDetail = (props) => {
     let execlusive;
     if (user.role === 'teacher'){
         execlusive = (
-            <TouchableOpacity onPress={() => { props.navigation.navigate('createSubject', {context: "Chapter"}) }} style={styles.bttn3}>
+            <TouchableOpacity onPress={() => { props.navigation.navigate('createSubject', {context: "Chapter", subject: subject}) }} style={styles.bttn3}>
                 <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Create Chapter</Text>
             </TouchableOpacity>
         )

@@ -103,7 +103,7 @@ export default function SubjectDetail(props) {
                     {
                         user.subjects.map((element, index) => (
                             <ListItem key={index} bottomDivider  containerStyle={styles.bttn2} onPress={() => {
-                                 props.navigation.navigate('miniSubjDetail', { name: element.name, detail: element.detail, chapters: element.chapters })
+                                 props.navigation.navigate('miniSubjDetail', { name: element.name, detail: element.detail, chapters: element.chapters, subject: element })
                                  dispatch(addHistory(element));
                                  }}>
                                 {/* <ListItem.Content> */}
