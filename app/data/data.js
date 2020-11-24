@@ -4,13 +4,6 @@ import Chapter from "../model/Chapter";
 import Exercise from "../model/Exercise";
 import Question from "../model/Question";
 
-export const USER = [
-    new User(1, "user01","pass01","teacher","https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", ["Math", "English 1", "CS Unplugged"]),
-    new User(2, "user02","pass02","student","https://i.pinimg.com/236x/7d/1a/3f/7d1a3f77eee9f34782c6f88e97a6c888--no-face-facebook-profile.jpg", ["Math", "CS Unplugged"]),
-    new User(3, "user03","pass03","student","https://i.pinimg.com/236x/7d/1a/3f/7d1a3f77eee9f34782c6f88e97a6c888--no-face-facebook-profile.jpg", []),
-    new User(4, "user04","pass04","student","https://i.pinimg.com/236x/7d/1a/3f/7d1a3f77eee9f34782c6f88e97a6c888--no-face-facebook-profile.jpg", []),
-];
-
 export const DATA = [
     new Subject(
         1,
@@ -49,6 +42,23 @@ export const DATA = [
     ),
     new Subject(2, "English 1", "Foundation Emglish", []),
     new Subject(3, "CS Unplugged", "Computer Science without a computer", []),
+];
+
+export const USER = [
+    new User(1,
+        "user01",
+        "pass01",
+        "teacher",
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        [
+            DATA[0],
+            DATA[1],
+            DATA[2],
+        ]
+    ),
+    new User(2, "user02","pass02","student","https://i.pinimg.com/236x/7d/1a/3f/7d1a3f77eee9f34782c6f88e97a6c888--no-face-facebook-profile.jpg", [DATA[1], DATA[2]]),
+    new User(3, "user03","pass03","student","https://i.pinimg.com/236x/7d/1a/3f/7d1a3f77eee9f34782c6f88e97a6c888--no-face-facebook-profile.jpg", []),
+    new User(4, "user04","pass04","student","https://i.pinimg.com/236x/7d/1a/3f/7d1a3f77eee9f34782c6f88e97a6c888--no-face-facebook-profile.jpg", []),
 ];
 
 // export const CHAPTER = [
