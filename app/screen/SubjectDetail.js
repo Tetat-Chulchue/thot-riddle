@@ -52,6 +52,19 @@ export default function SubjectDetail(props) {
     //     (meal) => meal.categoryIds.indexOf(catId) >= 0
     //   );
     // console.log(data.map());
+
+    let delSub;
+    if (user.role === 'teacher'){
+        delSub = (
+            <TouchableOpacity style={{alignSelf: 'flex-end'}}>
+                <AntDesign name="delete" size={20} color="black" style={{ flex: 1}} onPress={()=> {console.log("Wat")}}/>
+            </TouchableOpacity>
+            // <AntDesign name="delete" size={24} color="black" style={{ flex: 1}} onPress={()=> {console.log("Wat")}}/>
+        )
+    }else{
+        delSub = (<TouchableOpacity ></TouchableOpacity>)
+    }
+
     let execlusive;
     if (user.role === 'teacher'){
         execlusive = (
@@ -62,31 +75,6 @@ export default function SubjectDetail(props) {
     }else{
         execlusive = (<TouchableOpacity ></TouchableOpacity>)
     }
-
-    let addStd;
-    if (user.role === 'teacher'){
-        addStd = (
-            <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.pop() }}>
-                <AntDesign name="plus" size={24} color="black" style={{ flex: 1, alignSelf: 'flex-end' }} />
-            </TouchableOpacity>
-        )
-    }else{
-        addStd = (<TouchableOpacity ></TouchableOpacity>)
-    }
-
-    let delSub;
-    if (user.role === 'teacher'){
-        delSub = (
-            <TouchableOpacity style={{alignSelf: 'flex-end'}}>
-                <AntDesign name="delete" size={24} color="black" style={{ flex: 1}} onPress={()=> {console.log("Wat")}}/>
-            </TouchableOpacity>
-            // <AntDesign name="delete" size={24} color="black" style={{ flex: 1}} onPress={()=> {console.log("Wat")}}/>
-        )
-    }else{
-        delSub = (<TouchableOpacity ></TouchableOpacity>)
-    }
-
-
     return (
         <View style={styles.container}>
             <View style={styles.subContainer}>
@@ -94,13 +82,12 @@ export default function SubjectDetail(props) {
                     <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.pop() }}>
                         <AntDesign name="left" size={24} color="black" style={{ flex: 1 }}/>
                     </TouchableOpacity>
-                    {addStd}
                     {/* Add Student Here */}
                     {/* Add Student Here */}
                     {/* Add Student Here */}
-                    {/* <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.pop() }}>
+                    <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.pop() }}>
                         <AntDesign name="plus" size={24} color="black" style={{ flex: 1, alignSelf: 'flex-end' }}/>
-                    </TouchableOpacity> */}
+                    </TouchableOpacity>
                     {/* Add Student Here */}
                     {/* Add Student Here */}
                     {/* Add Student Here */}
@@ -117,16 +104,17 @@ export default function SubjectDetail(props) {
                 <View style={styles.nani}>
                     {
                         user.subjects.map((element, index) => (
-                                <ListItem key={index} bottomDivider containerStyle={styles.bttn2} onPress={() => {
-                                    props.navigation.navigate('miniSubjDetail', { name: element.name, detail: element.detail, chapters: element.chapters })
-                                    dispatch(addHistory(element));
-                                }}>
+                            <ListItem key={index} bottomDivider  containerStyle={styles.bttn2} onPress={() => {
+                                 props.navigation.navigate('miniSubjDetail', { name: element.name, detail: element.detail, chapters: element.chapters })
+                                 dispatch(addHistory(element));
+                                 }}>
+                                {/* <ListItem.Content> */}
                                     <TouchableOpacity>
                                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element.name}</Text>
                                     </TouchableOpacity>
                                     {delSub}
-                                    {/* <AntDesign name="delete" size={24} color="black" style={{ flex: 1}} onPress={()=> {console.log("Wat")}}/> */}
-                                </ListItem>
+                                {/* </ListItem.Content> */}
+                            </ListItem>
                         ))
                     }
                 {execlusive}
@@ -170,7 +158,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderRadius: 5,
         marginBottom: 10,
-        flex: 19,
         // paddingTop
         // textAlign: "center",
         // marginLeft: "5%",

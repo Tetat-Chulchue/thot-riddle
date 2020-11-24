@@ -21,11 +21,22 @@ const MiniSubjectDetail = (props) => {
     const name = props.navigation.getParam("name");
     const detail = props.navigation.getParam("detail");
     const chapters = props.navigation.getParam("chapters");
-    
+    const user = useSelector( (state) => state.user.currentUser);
+    let delSub;
+    if (user.role === 'teacher'){
+        delSub = (
+            <TouchableOpacity style={{alignSelf: 'flex-end'}}>
+                <AntDesign name="delete" size={24} color="black" style={{ flex: 1}} onPress={()=> {console.log("Wat")}}/>
+            </TouchableOpacity>
+            // <AntDesign name="delete" size={24} color="black" style={{ flex: 1}} onPress={()=> {console.log("Wat")}}/>
+        )
+    }else{
+        delSub = (<TouchableOpacity ></TouchableOpacity>)
+    }
     // console.log(name);
     // console.log(detail);
     // console.log(chapters);
-    const user = useSelector( (state) => state.user.currentUser);
+    // const user = useSelector( (state) => state.user.currentUser);
     let execlusive;
     if (user.role === 'teacher'){
         execlusive = (
@@ -57,6 +68,7 @@ const MiniSubjectDetail = (props) => {
                                 <TouchableOpacity >
                                     <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>{element.name}</Text>
                                 </TouchableOpacity>
+                                {delSub}
                                 {/* </ListItem.Content> */}
                             </ListItem>
                         ))
