@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect }  from "react";
 import {
     View,
     Text,
@@ -35,7 +35,10 @@ const Choise = (props) => {
     // if (abc == an)
     let exPart;
     const isQuiz = props.isQuiz;
-
+    useEffect(() =>{
+        setBG(['lightgrey', 'lightgrey', 'lightgrey', 'lightgrey']);
+        setIsAnswered(false);
+    }, [questions])
     const IsRight = function (answer, index) {
         let new_bg ='';
         console.log(isAnswered)
@@ -105,13 +108,13 @@ const Choise = (props) => {
                         </ListItem>
                     ))
                 }
-                {exPart}
+                {/* {exPart} */}
             </View>)
     } else {
         return (
             <View style={styles.nani}>
                 <TextInput placeholder="Type your answer here..." textContentType="none" style={styles.form}/>
-                {exPart}
+                {/* {exPart} */}
             </View>
         )
     }

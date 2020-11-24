@@ -17,6 +17,7 @@ const { width, height } = Dimensions.get('window');
 import { AntDesign } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import Choise from './Choise';
+import { setBG } from './Choise';
 // import IsQuiz from './IsQuiz';
 import { ListItem } from 'react-native-elements';
 
@@ -45,6 +46,11 @@ const ExercisePage = (props) => {
                     <Text style={{ color: color.color_1, fontSize: 18, flex: 6, alignSelf: "flex-start" }}>{questions[quesIndex].question}</Text>
                 </View>
                 <Choise style={styles.nani } type={questions[quesIndex].type} isQuiz={type} questions={questions[quesIndex].choises} answer={questions[quesIndex].answer}/>
+                <View style={styles.blacky}>
+                    <TouchableOpacity style={styles.bttn3} onPress={() => {setQuesIndex(quesIndex + 1)}}>
+                        <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Next</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     );

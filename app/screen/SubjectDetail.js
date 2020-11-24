@@ -53,16 +53,16 @@ export default function SubjectDetail(props) {
     //   );
     // console.log(data.map());
 
-    let delSub;
+    let addStd;
     if (user.role === 'teacher'){
-        delSub = (
-            <TouchableOpacity style={{alignSelf: 'flex-end'}}>
-                <AntDesign name="delete" size={20} color="black" style={{ flex: 1}} onPress={()=> {console.log("Wat")}}/>
+        addStd = (
+            <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.navigate('addStudent') }}>
+                <AntDesign name="plus" size={24} color="black" style={{ flex: 1, alignSelf: 'flex-end' }} />
             </TouchableOpacity>
             // <AntDesign name="delete" size={24} color="black" style={{ flex: 1}} onPress={()=> {console.log("Wat")}}/>
         )
     }else{
-        delSub = (<TouchableOpacity ></TouchableOpacity>)
+        addStd = (<TouchableOpacity ></TouchableOpacity>)
     }
 
     let execlusive;
@@ -85,9 +85,7 @@ export default function SubjectDetail(props) {
                     {/* Add Student Here */}
                     {/* Add Student Here */}
                     {/* Add Student Here */}
-                    <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.pop() }}>
-                        <AntDesign name="plus" size={24} color="black" style={{ flex: 1, alignSelf: 'flex-end' }}/>
-                    </TouchableOpacity>
+                    {addStd}
                     {/* Add Student Here */}
                     {/* Add Student Here */}
                     {/* Add Student Here */}
