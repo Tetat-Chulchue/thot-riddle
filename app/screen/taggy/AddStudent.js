@@ -49,7 +49,7 @@ export default function SubjectDetail(props) {
                         textContentType="none"
                         style={styles.form}
                     />
-                    <TouchableOpacity onPress={() => { props.navigation.navigate() }} style={styles.bttn3}>
+                    <TouchableOpacity onPress={() => { props.navigation.navigate() }} style={styles.bttn2}>
                         <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold', alignSelf: "center" }}>Add Student</Text>
                     </TouchableOpacity>
                     {/* <AntDesign name="plus" size={24} color="black" style={{ flex: 1 }} /> */}
@@ -80,23 +80,23 @@ const styles = StyleSheet.create({
     // nani: {
     //     flex: 11,
     // },
-    // bttn2: {
-    //     backgroundColor: "lightgrey",
-    //     borderColor: "white",
-    //     borderWidth: 2,
-    //     padding: 5,
-    //     paddingLeft: 15,
-    //     paddingRight: 15,
-    //     width: "100%",
-    //     margin: 3,
-    //     alignItems: "center",
-    //     borderRadius: 5,
-    //     marginBottom: 10,
-    //     // paddingTop
-    //     // textAlign: "center",
-    //     // marginLeft: "5%",
-    //     // marginRight: "5%",
-    // },
+    bttn2: {
+        backgroundColor: "lightgrey",
+        borderColor: "white",
+        borderWidth: 2,
+        padding: 5,
+        paddingLeft: 15,
+        paddingRight: 15,
+        width: "100%",
+        margin: 3,
+        alignItems: "center",
+        borderRadius: 5,
+        marginBottom: 10,
+        // paddingTop
+        // textAlign: "center",
+        // marginLeft: "5%",
+        // marginRight: "5%",
+    },
     bttn3: {
         backgroundColor: "black",
         borderColor: "white",

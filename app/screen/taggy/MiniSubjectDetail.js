@@ -35,8 +35,8 @@ const MiniSubjectDetail = (props) => {
             </TouchableOpacity>
         )
         addStd = (
-            <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.navigate('addStudent', {subject: subject}) }}>
-                <AntDesign name="plus" size={24} color="black" style={{ flex: 1, alignSelf: 'flex-end' }} />
+            <TouchableOpacity style={{ flex: 1 }}>
+                {/* <AntDesign name="plus" size={24} color="black" style={{ flex: 1, alignSelf: 'flex-end' }} /> */}
             </TouchableOpacity>
             // <AntDesign name="delete" size={24} color="black" style={{ flex: 1}} onPress={()=> {console.log("Wat")}}/>
         )
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         flex: 2,
     },
     bttn2: {
-        backgroundColor: "lightgrey",
+        backgroundColor: color.color_3,
         borderColor: "white",
         borderWidth: 2,
         padding: 5,

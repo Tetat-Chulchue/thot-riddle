@@ -7,12 +7,12 @@ import Question from "../model/Question";
 export const DATA = [
     new Subject(
         1,
-        "Introduction tp Math 1",
-        "This is subject about Basic Math",
+        "Introduction to Math 1",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
         [
             new Chapter(
-                "Math Chapter 1",
-                "Math detail 1",
+                "Introduction to basic operator",
+                "In this chapter we will discuss about how to applied basic math operator",
                 [
                     new Exercise(
                         "quiz 01",
@@ -36,8 +36,8 @@ export const DATA = [
                     new Exercise("Exercise 02", "exercise", []),
                 ]
             ),
-            new Chapter("Math Chapter 2","Math detail 2", []),
-            new Chapter("Math Chapter 3","Math detail 3", [])
+            new Chapter("Introduction to calculus","Math detail 2", []),
+            new Chapter("Aerodynamic of a cow","Math detail 3", [])
         ]
     ),
     new Subject(2, "English 1", "Foundation Emglish", []),
@@ -60,23 +60,4 @@ export const USER = [
     new User(3, "user03","pass03","student","https://i.pinimg.com/236x/7d/1a/3f/7d1a3f77eee9f34782c6f88e97a6c888--no-face-facebook-profile.jpg", []),
     new User(4, "user04","pass04","student","https://i.pinimg.com/236x/7d/1a/3f/7d1a3f77eee9f34782c6f88e97a6c888--no-face-facebook-profile.jpg", []),
 ];
-
-// export const CHAPTER = [
-//     new Chapter("Math Chapter 1","Math detail 1").addExercise(["quiz 01","quiz 02","Exercise 01","Exercise 02"]),
-//     new Chapter("Math Chapter 2","Math detail 2"),
-//     new Chapter("English Chapter 1","English detail 1"),
-
-// ];
-
-// export const EXERCISE = [
-//     new Exercise("quiz 01","quiz detail 1").addQuestion(["1+1=?", "binary 10 to decimal"]),
-//     new Exercise("quiz 02","quiz detail 2"),
-//     new Exercise("Exercise 01","exercise detail 1"),
-//     new Exercise("Exercise 02","exercise detail 2"),
-// ];
-
-// export const QUESTION = [
-//     new Question("1+1=?","choise",["1","2","11","10"],"2"),
-//     new Question("binary 10 to decimal","fill",null,"2"),
-// ];
 

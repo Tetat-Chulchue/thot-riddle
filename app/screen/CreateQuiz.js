@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image } from 'react-native';
+import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image, Alert } from 'react-native';
 import { Button, Input, Text, CheckBox } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { AntDesign } from "@expo/vector-icons";
@@ -72,7 +72,15 @@ export default function CreateQuiz(props) {
                         title="Next   "
                         onPress={() => {
                             let quiz = new Exercise(name, type, []);
-                            dispatch(createQuiz(subject, chapter[0], quiz))
+                            dispatch(createQuiz(subject, chapter[0], quiz));
+                            Alert.alert(
+                                "Successful",
+                                "You have created quiz",
+                                [
+                                    { text: "OK", onPress: () => console.log("Created Successful") }
+                                ],
+                                { cancelable: false }
+                            );
                             props.navigation.navigate('CreateQuestion', {subject: subject, chapter: chapter[0], quiz: quiz}) 
                         }}
                         containerStyle={{ marginTop: 20 }}

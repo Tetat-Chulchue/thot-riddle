@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text,
     StyleSheet,
     TextInput,
     Platform,
@@ -18,7 +17,7 @@ import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { ListItem } from 'react-native-elements'
+import { ListItem, Text } from 'react-native-elements'
 import { addHistory } from '../store/action/userAction';
 
 
@@ -33,8 +32,8 @@ export default function SubjectDetail(props) {
     let addStd;
     if (user.role === 'teacher'){
         addStd = (
-            <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.navigate('addStudent') }}>
-                <AntDesign name="plus" size={24} color="black" style={{ flex: 1, alignSelf: 'flex-end' }} />
+            <TouchableOpacity style={{ flex: 1 }}>
+                {/* <AntDesign name="plus" size={24} color="black" style={{ flex: 1, alignSelf: 'flex-end' }} /> */}
             </TouchableOpacity>
             // <AntDesign name="delete" size={24} color="black" style={{ flex: 1}} onPress={()=> {console.log("Wat")}}/>
         )
@@ -59,6 +58,7 @@ export default function SubjectDetail(props) {
                     <TouchableOpacity style={{ flex: 1 }} onPress={() => { props.navigation.pop() }}>
                         <AntDesign name="left" size={24} color="black" style={{ flex: 1 }}/>
                     </TouchableOpacity>
+                    <TouchableOpacity><Text h1>My Subject</Text></TouchableOpacity>
                     {/* Add Student Here */}
                     {/* Add Student Here */}
                     {/* Add Student Here */}
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
         flex: 11,
     },
     bttn2: {
-        backgroundColor: "lightgrey",
+        backgroundColor: color.color_3,
         borderColor: "white",
         borderWidth: 2,
         padding: 5,

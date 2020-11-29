@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
         flex: 2,
     },
     bttn2: {
-        backgroundColor: "lightgrey",
+        backgroundColor: color.color_3,
         borderColor: "white",
         borderWidth: 2,
         padding: 5,

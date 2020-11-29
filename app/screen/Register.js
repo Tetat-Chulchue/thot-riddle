@@ -70,6 +70,7 @@ export default function Login(props) {
                             />
                         }
                         onChangeText={(text) => { setPassword(text) }}
+                        secureTextEntry={true}
                     />
                     <Input
                         placeholder='Confirm Password'
@@ -81,6 +82,7 @@ export default function Login(props) {
                             />
                         }
                         onChangeText={(text) => { setconfirmPassword(text) }}
+                        secureTextEntry={true}
                     />
                     <View style={{ flexDirection: 'row' }}>
                         <CheckBox

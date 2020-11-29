@@ -25,17 +25,20 @@ export default function Profile(props) {
                         uri:
                             user.profileImage,
                     }}
-                    containerStyle={{ width: width * 0.5, height: width * 0.5 }}
+                    containerStyle={{ width: width * 0.5, height: width * 0.5, marginTop: 15, marginBottom: 10}}
                 />
 
                 <View>
+                    <Text h3> Welcome, {user.username} </Text>
+                </View>
+                {/* <View>
                     <Text h4>Achievement</Text>
                     <View></View>
                 </View>
                 <View>
                     <Text h4>Trophies</Text>
                     <View></View>
-                </View>
+                </View> */}
 
                 <View>
                     <Button

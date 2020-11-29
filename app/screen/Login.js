@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, createRef } from 'react';
 import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image, Alert } from 'react-native';
 import { Button, Input, Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -66,6 +66,7 @@ export default function Login(props) {
                             />
                         }
                         onChangeText={(text) => { setPassword(text) }}
+                        secureTextEntry={true}
                     />
                     <Button
                         icon={

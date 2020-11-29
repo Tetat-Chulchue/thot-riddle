@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image } from 'react-native';
+import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image, Alert } from 'react-native';
 import { Button, Input, Text, Divider } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { AntDesign } from "@expo/vector-icons";
@@ -56,9 +56,27 @@ export default function CreateSubject(props) {
                         title={'Create ' + context + '  '}
                         onPress={() => {
                             if (context === 'Subject') {
-                                dispatch(addSubject(new Subject(user.subjects.lenght + 1, name, des, [])))
+                                dispatch(addSubject(new Subject(user.subjects.lenght + 1, name, des, [])));
+                                Alert.alert(
+                                    "Successful",
+                                    "You have created " + name + " subject",
+                                    [
+                                        { text: "OK", onPress: () => console.log("Created Successful") }
+                                    ],
+                                    { cancelable: false }
+                                );
+                                props.navigation.pop();
                             } else if (context === 'Chapter') {
-                                dispatch(addChapter(subject, new Chapter(name, des, [])))
+                                dispatch(addChapter(subject, new Chapter(name, des, [])));
+                                Alert.alert(
+                                    "Successful",
+                                    "You have created " + name + " chapter",
+                                    [
+                                        { text: "OK", onPress: () => console.log("Created Successful") }
+                                    ],
+                                    { cancelable: false }
+                                );
+                                props.navigation.pop();
                             }
                         }}
                         containerStyle={{ marginTop: 20 }}

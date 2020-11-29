@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image } from 'react-native';
+import { StyleSheet, View, Dimensions, TextInput, KeyboardAvoidingView, Image, Alert } from 'react-native';
 import { Button, Input, Text, CheckBox } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { AntDesign } from "@expo/vector-icons";
@@ -40,7 +40,7 @@ export default function CreateQuiz(props) {
         <View style={styles.container}>
             <KeyboardAvoidingView style={styles.subContainer}>
                 <View style={{ flexDirection: 'row' }}>
-                    <AntDesign name="left" size={36} style={{ flex: 1, marginTop: 5, marginLeft: 5 }} onPress={() => { }} />
+                    <AntDesign name="left" size={36} style={{ flex: 1, marginTop: 5, marginLeft: 5 }} onPress={() => { props.navigation.popToTop()}} />
                 </View>
                 <View style={{ marginTop: 10 }}>
                     <TextInput
@@ -51,6 +51,7 @@ export default function CreateQuiz(props) {
                         maxLength={9999}
                         placeholder="    Type description here..."
                         onChangeText={(text) => {setQuestion(text)}}
+                        clearTextOnFocus={true}
                     />
                     <View style={{ flexDirection: 'row', marginTop: 15 }}>
                         <CheckBox
@@ -81,6 +82,7 @@ export default function CreateQuiz(props) {
                                 disabled={isFill}
                                 containerStyle={{ flex: 19 }}
                                 onChangeText={(text) => {setChoise1(text)}}
+                                clearTextOnFocus={true}
                             />
                             <CheckBox
                                 checked={is1}
@@ -100,6 +102,7 @@ export default function CreateQuiz(props) {
                                 disabled={isFill}
                                 containerStyle={{ flex: 19 }}
                                 onChangeText={(text) => {setChoise2(text)}}
+                                clearTextOnFocus={true}
                             />
                             <CheckBox
                                 checked={is2}
@@ -119,6 +122,7 @@ export default function CreateQuiz(props) {
                                 disabled={isFill}
                                 containerStyle={{ flex: 19 }}
                                 onChangeText={(text) => {setChoise3(text)}}
+                                clearTextOnFocus={true}
                             />
                             <CheckBox
                                 checked={is3}
@@ -138,6 +142,7 @@ export default function CreateQuiz(props) {
                                 disabled={isFill}
                                 containerStyle={{ flex: 19 }}
                                 onChangeText={(text) => {setChoise4(text)}}
+                                clearTextOnFocus={true}
                             />
                             <CheckBox
                                 checked={is4}
@@ -165,7 +170,16 @@ export default function CreateQuiz(props) {
                         raised={true}
                         title="Add   "
                         onPress={() => {
-                            dispatch(createQuestion(subject, chapter, quiz, new Question(question, type, [choise1, choise2, choise3, choise4], correctIndex)))
+                            dispatch(createQuestion(subject, chapter, quiz, new Question(question, type, [choise1, choise2, choise3, choise4], correctIndex)));
+                            Alert.alert(
+                                "Successful",
+                                "You have created question",
+                                [
+                                    { text: "OK", onPress: () => console.log("Created Successful") }
+                                ],
+                                { cancelable: false }
+                            );
+                            // props.navigation.pop();
                         }}
                         containerStyle={{ marginTop: 20 }}
                         buttonStyle={{ backgroundColor: color.color_1, borderRadius: 10 }}
@@ -182,7 +196,7 @@ export default function CreateQuiz(props) {
                         type='solid'
                         raised={true}
                         title="Done   "
-                        onPress={() => { props.navigation.popToTop() }}
+                        onPress={() => { props.navigation.navigate('chapDetail') }}
                         containerStyle={{ marginTop: 20 }}
                         buttonStyle={{ backgroundColor: color.color_1, borderRadius: 10 }}
                     />
